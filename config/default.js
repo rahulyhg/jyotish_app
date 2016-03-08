@@ -5,8 +5,8 @@ module.exports = {
   // secret data can be moved to env variables
   // or a separate config
   connection:{
-    port: process.env.PORT_production || '3000',
-    ipaddress: process.env.IP_production || 'localhost'  
+    port: '8080',
+    ipaddress: '10.129.8.143'  
   },
   keys:   ['mysecret'],
   mongoose: {
