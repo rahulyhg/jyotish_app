@@ -131,7 +131,7 @@ let mails = [{
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
     'nameSender': 'Oleg',
-    'Theme': 'LEARN ANGULAR AND MAKE 5000$',
+    'Theme': 'LEARN ANGULAR AND MAKE IT REAL',
     'attach': {
         'file': 'x'
     },
