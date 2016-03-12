@@ -49,9 +49,18 @@ router.get('/', require('./routes/frontpage').get);
 // router.post('/logout', require('./routes/logout').post);
 // router.register('/', require('./routes/login').post);
 
+
+
+
 const User = require('./models/user');
+const Mail = require('./models/mail');
 
 
+router.post('/mail/create', function*(next){
+	let param = this.request.body;
+	let options = Object.keys(this.request.body).reduce((a,b)=>(a[b]=param[b],a),{});
+	let mail = yield Mail.create(options);
+});
 
 router
 .param('userById', function*(id, next) {

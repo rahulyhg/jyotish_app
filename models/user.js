@@ -32,7 +32,30 @@ var userSchema = new mongoose.Schema({
   created: {
     type: Date,
     default: Date.now
-  }
+  },
+  mails: [{
+      date: {
+       type:Date
+      },
+      UID: {
+        required:true,
+        type:String
+      },
+      to: {
+        required:true,
+        type:String
+      },
+      status: {
+        type:Boolean,
+        required:true,
+        default:false
+      }
+      inBox: {
+        required:true, 
+        type:String,
+        default: 'Unsort'
+      }    
+    }]
 });
 
 userSchema.virtual('password')
