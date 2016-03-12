@@ -10,12 +10,12 @@ html
       form(name ="login" action='/api/register' method='post')
         h1 Регистрация
         .form-group
-          label(for="name") Отображаемое имя
-          input.form-control(type="email" id="email" name="email" placeholder="my@mail.com" value="oleglustenko@gmail.com" required autofocus)
+          label(for="name") Имя
+          input.form-control(type="email" id="email" name="email" placeholder="my@mail.com" required autofocus)
         .form-group
           label(for="email") email
-          input.form-control(type="password" id="password" name="password" value="123456" required)
+          input.form-control(type="password" id="password" name="password" required)
           label(for="password") Password
-          input.form-control(type="password" id="password" name="password" value="123456" required)        
+          input.form-control(type="password" id="password" name="password" required)        
         button.btn Отправить
        

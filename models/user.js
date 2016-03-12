@@ -42,7 +42,6 @@ userSchema.virtual('password')
         this.invalidate('password', 'Пароль должен быть минимум 4 символа.');
       }
     }
-
     this._plainPassword = password;
 
     this.salt = crypto.randomBytes(config.crypto.hash.length).toString('base64');
