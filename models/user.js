@@ -49,7 +49,7 @@ var userSchema = new mongoose.Schema({
         type:Boolean,
         required:true,
         default:false
-      }
+      },
       inBox: {
         required:true, 
         type:String,

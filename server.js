@@ -56,14 +56,21 @@ const User = require('./models/user');
 const Mail = require('./models/mail');
 
 
-router.post('/mail/create', function*(next){
+router.post('/mail/create/', function*(next){
 	let param = this.request.body;
 	let options = Object.keys(this.request.body).reduce((a,b)=>(a[b]=param[b],a),{});
+	console.log(options);
 	let mail = yield Mail.create(options);
+	this.body = mail.toObject();
+});
+
+router.get('/mail/show/', function*(next){
+	let mails = yield Mail.find({}).lean();
+	this.body = mails;
 });
 
 router
-.param('userById', function*(id, next) {
+  .param('userById', function*(id, next) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       this.throw(404);
     }
@@ -91,9 +98,6 @@ router
     users = users.map(x=>Object.keys(x).filter(y=>y=='displayName' || y=='email').reduce((a,b)=>(a[b]=x[b],a),{}))  
     this.body = users;
   });
-
-
-
 
 // router.get('/fb', require('./auth/facebook').fb);
 // router.get('/vk', require('./auth/vk').vk);
