@@ -8,7 +8,19 @@ var mailSchema = new mongoose.Schema({
     type:     String,
     required: "Имя пользователя отсутствует."
   },
-  email:         {
+  from:         {
+    type:     String,    
+    required: "E-mail пользователя не должен быть пустым.",
+    validate: [
+      {
+        validator: function checkEmail(value) {
+          return /^[-.\w]+@([\w-]+\.)+[\w-]{2,12}$/.test(value);
+        },
+        msg:       'Укажите, пожалуйста, корректный email.'
+      }
+    ]
+  },
+  to:         {
     type:     String,    
     required: "E-mail пользователя не должен быть пустым.",
     validate: [
@@ -23,7 +35,7 @@ var mailSchema = new mongoose.Schema({
   Theme:  {
     type: String
   },
-  Text:          {   
+  textLetter:          {   
     type: String
   },
   created: {
