@@ -9,8 +9,7 @@ var mailSchema = new mongoose.Schema({
     required: "Имя пользователя отсутствует."
   },
   email:         {
-    type:     String,
-    unique:   true,
+    type:     String,    
     required: "E-mail пользователя не должен быть пустым.",
     validate: [
       {

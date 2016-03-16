@@ -21,7 +21,7 @@ let ipaddress = config.connection.ipaddress;
 
  // console.log(process.env)
 
-if(process.env.NODE_ENV == 'deploy'){
+if(process.env.NODE_ENV == 'production'){
 	port = '3000';
 	ipaddress = 'localhost';
 };
