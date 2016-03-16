@@ -67,5 +67,5 @@ var mailSchema = new mongoose.Schema({
 //   return crypto.pbkdf2Sync(password, this.salt, config.crypto.hash.iterations, config.crypto.hash.length) == this.passwordHash;
 // };
 
-module.exports = mongoose.model('Mail', mailSchema);
+module.exports = mongoose.model('mails', mailSchema);
 
