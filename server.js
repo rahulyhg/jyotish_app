@@ -45,29 +45,21 @@ var router = new Router();
 
 // router.get('/', this.body = this.render('index'));
 router.get('/', require('./routes/frontpage').get);
-// router.post('/login', require('./routes/login').post);
+router.post('/login', require('./routes/login').post);
 // router.post('/logout', require('./routes/logout').post);
 // router.register('/', require('./routes/login').post);
-
-
-
+router.post('/mail/create/', require('./mail/api').post);
+router.get('/mail/show/', require('./mail/api').get);
 
 const User = require('./models/user');
 const Mail = require('./models/mail');
 
 
-router.post('/mail/create/', function*(next){
-	let param = this.request.body;
-	let options = Object.keys(this.request.body).reduce((a,b)=>(a[b]=param[b],a),{});
-	console.log(options);
-	let mail = yield Mail.create(options);
-	this.body = mail.toObject();
-});
+router.post('/aj/register/', function*(next){
+  console.log(this.request.body);
 
-router.get('/mail/show/', function*(next){
-	let mails = yield Mail.find({}).lean();
-	this.body = mails;
-});
+  this.body = {"it":"ok"};
+})
 
 router
   .param('userById', function*(id, next) {

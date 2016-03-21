@@ -60,20 +60,15 @@ app.component('app', {
 
 let navbars = [{
     'name': 'All',
-    'active': false
-}, {
+    'active': false}, {
     'name': 'New mails',
-    'active': false
-}, {
+    'active': false}, {
     'name': 'Send',
-    'active': false
-}, {
+    'active': false}, {
     'name': 'Trash',
-    'active': false
-}, {
+    'active': false}, {
     'name': 'Starred',
-    'active': false
-}];
+    'active': false}];
 let mails = [{
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
@@ -86,8 +81,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': true,
-    'inBox': 'New mails'
-}, {
+    'inBox': 'New mails'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -99,8 +93,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': true,
-    'inBox': 'Send'
-}, {
+    'inBox': 'Send'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -112,8 +105,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': false,
-    'inBox': 'Trash'
-}, {
+    'inBox': 'Trash'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -125,8 +117,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': false,
-    'inBox': 'Trash'
-}, {
+    'inBox': 'Trash'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -138,8 +129,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': true,
-    'inBox': 'Starred'
-}, {
+    'inBox': 'Starred'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -151,8 +141,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': true,
-    'inBox': 'Starred'
-}, {
+    'inBox': 'Starred'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -164,8 +153,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': true,
-    'inBox': 'Send'
-}, {
+    'inBox': 'Send'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -177,8 +165,7 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'Privet Stepan kak dela?',
     'status': true,
-    'inBox': 'Send'
-}, {
+    'inBox': 'Send'}, {
     'from': 'oleg@ukr.net',
     'to': 'oleglustneko@gmail.com',
     'date': '14-09-15',
@@ -190,5 +177,4 @@ let mails = [{
     'unicode': 'UTF-8',
     'textLetter': 'NE PRIVVVVEEEETTTT',
     'status': false,
-    'inBox': 'Send'
-}, ];
+    'inBox': 'Send'}, ];
