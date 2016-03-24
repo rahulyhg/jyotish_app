@@ -1,6 +1,6 @@
 <html ng-app="app">
 
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>Web mail Angu-app</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
@@ -8,10 +8,30 @@
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <link rel="stylesheet" href="css/style.css" />
     <script src=app.js></script>
-  </head>
-  <body>
-  {{22+33+10+15+3}}
-  <app></app>
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" [routerLink]="['/Index']">Jyotish-Gift Mail-Server</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a [routerLink]="['/Pass']">Login</a></li>
+                    <li><a [routerLink]="['/Regist']">Regist</a></li>
+                    <li><a [routerLink]="['/Login']">auth</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <app></app>
 </body>
- 
+
 </html>

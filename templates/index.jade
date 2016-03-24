@@ -3,18 +3,39 @@ html(ng-app="app")
 
   head
     meta(charset="UTF-8")
-    title We mail Angu-app
+    title Jyotish Gifts
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css")
     link(rel="stylesheet" href="/style.css")
     script(src="https://cdn.firebase.com/js/client/2.2.1/firebase.js")  
     script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js")
-    script(src="app/app.js")
-
-    //- link(rel="stylesheet" href="css/chat.css")
-    //- @see https://github.com/Automattic/socket.io-client
-    //- script(src="/socket.io/socket.io.js")
-    //- script(src="http://code.jquery.com/jquery-1.11.1.js")
+    script(src="app/app.js") 
 
   body
+    
+    .container-fluid.nav-color
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation                                 
+            span.icon-bar                                 
+            span.icon-bar
+                                
+            span.icon-bar
+                         
+          a.navbar-brand._big-text([routerlink]="['/Index']") Jyotish-Gift
+        |             
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a Login
+            |                     
+            li
+              a Regist
+            |                     
+            li
+              a Auth
+            |                     
+            li
+              a Users  
+
     app  
 

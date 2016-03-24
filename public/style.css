@@ -1,3 +1,10 @@
+/*Oleg Lustenko css created 23.03.2016*/
+
+@font-face {
+	font-family: LI;
+	src:url(688.ttf);
+}
+
 .navbar-fixed-left {
   width: 200px;
   position: fixed;
@@ -18,4 +25,34 @@
 .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
   margin-top: -50px;
   margin-left: 200px;
+}
+
+.nav-color {background-color:rgba(0,0,0,0.8)}
+	.nav-color .li > .a {
+		color: white!important;
+	}
+	
+body {
+	font-family: LI!important;
+	font-size: 22px;
+}
+
+.left-section {
+	font-size: 22px!important;
+}
+
+._big-text{
+	font-size:35px!important;
+}
+
+.mail-box {
+	font-size:20px;
+	color:#000000;
+}
+
+.mail-box tr:hover{
+	color:rgb(255, 111, 111);
+}
+.compose {
+	margin-top:15px
 }

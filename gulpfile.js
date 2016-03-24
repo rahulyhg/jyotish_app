@@ -15,7 +15,8 @@ process.on('uncaughtException', function(err) {
 gulp.task("nodemon", function(callback) {
   gp.nodemon({
     nodeArgs: ['--debug'],
-    script:   "server.js"
+    script:   "server.js",
+    ext: 'jade js html'
     /* watch, ignore */
   });
 });

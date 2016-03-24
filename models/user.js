@@ -33,29 +33,54 @@ var userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  mails: [{
-      date: {
-       type:Date
+  gender: {
+    type: String,
+    enum: {
+      values:  ['male', 'female'],
+      message: "Неизвестное значение для пола."
+    }
+  },
+  profileName:   {
+    type:     String,
+    validate: [
+      {
+        validator: function(value) {
+          // also checks required
+          if (this.deleted) return true;
+          return value && value.length >= 2;
+        },
+        msg:       "Минимальная длина имени профиля: 2 символа."
       },
-      UID: {
-        required:true,
-        type:String
+      {
+        validator: function(value) {
+          return this.deleted || /^[a-z0-9-]*$/.test(value);
+        },
+        msg:       "В имени профиля допустимы только буквы a-z, цифры и дефис."
       },
-      to: {
-        required:true,
-        type:String
-      },
-      status: {
-        type:Boolean,
-        required:true,
-        default:false
-      },
-      inBox: {
-        required:true, 
-        type:String,
-        default: 'Unsort'
-      }    
-    }]
+      {
+        validator: function(value) {
+          // if no value, this validator passes (another one triggers the error)
+          return this.deleted || !value || value.length <= 64;
+        },
+        msg:       "Максимальная длина имени профиля: 64 символа."
+      }
+    ]
+  },
+  birthday:                  String,
+  country:                   String,
+  town:                      String,
+  publicEmail:               String,
+  aboutMe:                   {
+    type:      String,
+    maxlength: 600
+  },
+  deleted:                   { // private & login data is deleted
+    type:    Boolean,
+    default: false
+  },
+  readOnly:                  Boolean,  // data is not deleted, just flagged as banned
+  isAdmin:                   Boolean,
+  urlPic:                    String  
 });
 
 userSchema.virtual('password')

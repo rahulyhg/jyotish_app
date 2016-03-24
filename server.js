@@ -54,42 +54,26 @@ router.get('/mail/show/', require('./mail/api').get);
 const User = require('./models/user');
 const Mail = require('./models/mail');
 
+router.param('userById', function*(id, next) {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            this.throw(404);
+        }
 
-router.post('/aj/register/', function*(next){
-  console.log(this.request.body);
+        this.userById = yield User.findById(id);
 
-  this.body = {"it":"ok"};
-})
+        if (!this.userById) {
+            this.throw(404);
+        }
+        yield * next;
+    });
 
-router
-  .param('userById', function*(id, next) {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      this.throw(404);
-    }
+router.post('/auth/login/register/', require('./users/api').post);
+router.get('/auth/login/register/:userById', require('./users/api').getId);
+router.get('/auth/login/register/', require('./users/api').get);
+router.put('/auth/login/register/', require('./users/api').put);
 
-    this.userById = yield User.findById(id);
 
-    if (!this.userById) {
-      this.throw(404);
-    }
-    yield* next;
-  })
-  .post('/auth/login/register/', function*(next) {
-    let user = yield User.create({
-      password : this.request.body.password,
-      displayName: this.request.body.displayName,	
-      email: this.request.body.email
-    });    
-    this.body = user.toObject();
-  })
-  .get('/auth/login/register/:userById', function*(next) {
-    this.body = this.userById.toObject();
-  })
-  .get('/auth/login/register/', function*(next) {
-    let users = yield User.find({}).lean();
-    users = users.map(x=>Object.keys(x).filter(y=>y=='displayName' || y=='email').reduce((a,b)=>(a[b]=x[b],a),{}))  
-    this.body = users;
-  });
+
 
 // router.get('/fb', require('./auth/facebook').fb);
 // router.get('/vk', require('./auth/vk').vk);
