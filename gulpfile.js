@@ -16,7 +16,8 @@ gulp.task("nodemon", function(callback) {
   gp.nodemon({
     nodeArgs: ['--debug'],
     script:   "server.js",
-    ext: 'jade js html'
+    ext: 'jade js html',
+    env: { 'NODE_ENV': 'production' }
     /* watch, ignore */
   });
 });

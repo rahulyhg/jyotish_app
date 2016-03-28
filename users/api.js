@@ -8,7 +8,8 @@ module.exports.post = function*(next) {
         password: this.request.body.password,
         displayName: this.request.body.displayName,
         email: this.request.body.email,
-        birthday: this.request.body.birthday
+        birthday: this.request.body.birthday,
+        gender: this.request.body.gender
     });
     this.body = user.toObject();
 };

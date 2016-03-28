@@ -1,0 +1,38 @@
+<div class="panel panel-info" ng-repeat="names in $ctrl.usersList">
+    <div class="panel-heading">
+        <button ng-click=showUsers() class="btn btn-info ">Show users</button>
+        <h3 class="panel-title pull-right">{{names.displayName}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class=" col-md-9 col-lg-9 ">
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td><img ng-src="{{names.urlPic}}"></img>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Дата рождения</td>
+                            <td>{{names.birthday}}</td>
+                        </tr>
+                        <tr>
+                            <td>Пол</td>
+                            <td>{{names.gender}}</td>
+                        </tr>
+                        <tr>
+                            <td>Адрес</td>
+                            <td>{{names.aboutMe}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>
+                                <a ng-href="mailto:{{names.email}}">{{names.email}}</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

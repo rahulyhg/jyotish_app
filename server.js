@@ -45,11 +45,13 @@ var router = new Router();
 
 // router.get('/', this.body = this.render('index'));
 router.get('/', require('./routes/frontpage').get);
-router.post('/login', require('./routes/login').post);
+router.post('/api/login', require('./routes/login').post);
 // router.post('/logout', require('./routes/logout').post);
 // router.register('/', require('./routes/login').post);
 router.post('/mail/create/', require('./mail/api').post);
 router.get('/mail/show/', require('./mail/api').get);
+
+router.redirect('/mail','/');
 
 const User = require('./models/user');
 const Mail = require('./models/mail');
@@ -71,9 +73,6 @@ router.post('/auth/login/register/', require('./users/api').post);
 router.get('/auth/login/register/:userById', require('./users/api').getId);
 router.get('/auth/login/register/', require('./users/api').get);
 router.put('/auth/login/register/', require('./users/api').put);
-
-
-
 
 // router.get('/fb', require('./auth/facebook').fb);
 // router.get('/vk', require('./auth/vk').vk);
