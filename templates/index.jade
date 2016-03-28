@@ -18,24 +18,29 @@ html(ng-app="app")
             span.icon-bar                                
             span.icon-bar
                          
-          a.navbar-brand._big-text([routerlink]="['/Index']") Jyotish-Gift {{1+1}}
+          a.navbar-brand._big-text(href="/") Jyotish-Gift {{1+1}}
         |             
         .navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right
             li.active
-              a Почта   
+              a(href="/mail") Почта   
+              //- a(ui-sref="/mail") Почта   
             |    
             li
-              a Профиль
+              a(href="/auth") Профиль
+              //- a(ui-sref="/auth") Профиль
             |                     
             li
-              a Консультация
+              a(href="/advice") Консультация
+              //- a(ui-sref="/advice") Консультация
             |                     
             li
-              a Составить карту
+              a(href="/mail") Составить карту
+              //- a(ui-sref="/mail") Составить карту
             |                     
             li
-              a Пользователи         
+              a(href="/mail") Пользователи         
+              //- a(ui-sref="/mail") Пользователи         
      
     ui-view 
 

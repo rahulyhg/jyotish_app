@@ -57,7 +57,7 @@ const User = require('./models/user');
 const Mail = require('./models/mail');
 
 router.param('userById', function*(id, next) {
-        if (!mongoose.Types.ObjectId.isValid(id)) {
+        if (!mongooseose.Types.ObjectId.isValid(id)) {
             this.throw(404);
         }
 

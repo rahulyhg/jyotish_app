@@ -10,15 +10,27 @@ export default function MailList() {
             sent: '&'
         },
         controller: function(mailJob) {
-
-            // console.log(mailJob)
-
             function updResponse(query) {
-                console.log(query)
+
+                let month = ['January', 'February', 'March', 'April', 
+                            'May', 'June', 'July','August',
+                            'September', 'October', 'November','December']
+
+
+                                    console.log(query)    
                 return query
-                    .map(x =>
-                        Object.keys(x)
-                        .reduce((a, b) => (b == 'textLetter' && b.length ? a[b] = x[b].slice(0, 5) + '...' : a[b] = x[b], a), {})
+                    .map(x => Object.keys(x)
+                        .reduce((a, b) => {       
+
+                            if (b == 'textLetter' && b.length) {
+                                a[b] = x[b].slice(0, 5) + '...'
+                            } else if (b == 'created') {
+                                a[b] = month[1+ +x[b].slice(5, 7)] +' '+x[b].slice(8, 10)
+                            } else {
+                                a[b] = x[b]
+                            }
+                            return a
+                        }, {})
                     )
             }
 
@@ -27,11 +39,11 @@ export default function MailList() {
 
                 this.resBody = response.data;
                 this.mails = updResponse(this.resBody);
-                console.log(this.mails)
+
             }).catch(e => console.log(e));
 
             this.da = function(letter) {
-                console.log(letter.status);
+
                 letter.status != letter.status;
             };
             this.createFilter = function() {

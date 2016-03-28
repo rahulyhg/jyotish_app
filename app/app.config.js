@@ -1,4 +1,6 @@
 import mailtmpl from './Components/mail/mail.html';
+import advicetmpl from './Components/advice/advice.html';
+import authtmpl from './Components/auth/auth.html'
 
 routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
 
@@ -19,6 +21,15 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
                 // },
                 // controllerAs: '$ctrl'
         })
+        .state('advice', {
+            url: '/advice',
+            template: advicetmpl
+        })
+        .state('auth', {
+            url: '/auth',
+            template:authtmpl
+        })
+
         //     // .state('box', {
         //     //   parent: 'mail',
         //     //   url: '/:boxId',

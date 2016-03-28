@@ -14,5 +14,4 @@ class MailJob {
 
 export default angular.module('services.mail-job', [])
 	.service('mailJob', MailJob)
-	.name
-  
+	.name 
