@@ -10,3 +10,5 @@
   4. MongoDB
   5. Passport Authentification
   6. RESTfull api Architecture
+
+ webpack for front-end && gulp for back-end
