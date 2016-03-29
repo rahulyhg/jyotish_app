@@ -27,22 +27,22 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
         })
         .state('auth', {
             url: '/auth',
-            template:authtmpl
+            template: authtmpl
         })
 
-        //     // .state('box', {
-        //     //   parent: 'mail',
-        //     //   url: '/:boxId',
-        //     //   template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
-        //     //   controller: function($stateParams) {
-        //     //     this.boxId = $stateParams.boxId;
-        //     //   },
-        //     //   controllerAs: '$ctrl'
-        //     // })
-        //     .state('users', {
-        //         url: '/users',
-        //         template: '<user-cards></user-cards>'
-        //     });
+    //     // .state('box', {
+    //     //   parent: 'mail',
+    //     //   url: '/:boxId',
+    //     //   template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
+    //     //   controller: function($stateParams) {
+    //     //     this.boxId = $stateParams.boxId;
+    //     //   },
+    //     //   controllerAs: '$ctrl'
+    //     // })
+    //     .state('users', {
+    //         url: '/users',
+    //         template: '<user-cards></user-cards>'
+    //     });
 
 }
 
