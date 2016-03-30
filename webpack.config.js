@@ -30,13 +30,13 @@ module.exports = {
         aggregateTimeout: 300
     },
 
-    devtool: NODE_ENV == 'development' ? "cheap-inline-module-source-map" : null,
+    devtool: NODE_ENV == 'production' ? "cheap-inline-module-source-map" : null,
 
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.EnvironmentPlugin('NODE_ENV'),
-        new ngAnnotatePlugin({add: true}),
-        new webpack.optimize.UglifyJsPlugin()
+        new ngAnnotatePlugin({add: true})
+        // new webpack.optimize.UglifyJsPlugin()
             // compress: {
             //     warnings: false,
             //     drop_console: true,
