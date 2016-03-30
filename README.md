@@ -1,24 +1,14 @@
-# Jyotish app
+# Vedic Astrology Jyotish
+> Jyotish Gifts
 
-# Only 1 page loaded right now, testing deploy to digitalocean
+#### This is my pet project which running at Node.js - Koa [https://jyotish.gift](https://jyotish.gift)
 
-Koa.js, server with angular page
+## Technology:
+  1. Node.js - Koa
+  2. Angular 1.5
+  3. Jade
+  4. MongoDB
+  5. Passport Authentification
+  6. RESTfull api Architecture
 
-Technology:
-- Jade
-- Bootstrap
-- MongoDB
-- Passport
-- Mongoose
-- Redis
-- Websocket (socket.io)
-- gulp: [ fixtures, nodemon ]
-- Angular
-
-
-
-Passport authorization: 
-- Local: used Mongodb+Mongoose, also has email, password validation
-- VK, facebook
-*********
-
+ webpack for front-end && gulp for back-end
