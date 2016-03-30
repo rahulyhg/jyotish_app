@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+npm i  -D jshint-loader ng-annotate-loader
 npm i  -D koa mongoose koa-session-mongoose
 npm i  -D koa-favicon koa-static koa-logger koa-bodyparser koa-generic-session koa-json koa-cors
 npm i  -D koa-views jade koa-router config co-busboy koa-passport passport-local cookies passport-facebook passport-vkontakte

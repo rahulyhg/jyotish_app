@@ -4,6 +4,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 // let appFolder = fs.readdirSync(path.join(__dirname, 'public/app/Components'))
 //     .concat(fs.readdirSync(path.join(__dirname, 'public/app/services')))
@@ -34,6 +35,18 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.EnvironmentPlugin('NODE_ENV'),
+        new ngAnnotatePlugin({add: true}),
+        new webpack.optimize.UglifyJsPlugin()
+            // compress: {
+            //     warnings: false,
+            //     drop_console: true,
+            //     // mangle: false
+            //     // unsafe: true
+            // },
+            // mangle: {
+            //     except: ['$', 'exports', 'require', '$inject', 'import']
+            // }
+        
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: 'common'
         // })
@@ -41,13 +54,13 @@ module.exports = {
 
     resolve: {
         modulesDirectories: ['node_modules'],
-        extensions: ['', '.js','.css','.html']
+        extensions: ['', '.js', '.css', '.html']
     },
 
     resolveLoader: {
         modulesDirectories: ['node_modules'],
         moduleTemplates: ['*-loader', '*'],
-        extensions: ['', '.js', '.css','.html']
+        extensions: ['', '.js', '.css', '.html']
     },
 
     module: {
@@ -56,10 +69,11 @@ module.exports = {
                 // include: appFolder,
                 exclude: /node_modules/,
                 loader: 'babel?presets[]=es2015,plugins[]=transform-es2015-modules-commonjs'
+                	
             },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.html$/, loader: 'html'},
-            {test: /\.(woff|woff2|ttf|svg|eot)$/, loader: 'url'}
+            { test: /\.html$/, loader: 'html' },
+            { test: /\.(woff|woff2|ttf|svg|eot)$/, loader: 'url' }
         ]
     }
 }
@@ -68,12 +82,6 @@ console.log(module.exports.output)
 
 if (NODE_ENV != 'production') {
     module.exports.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: true,
-                unsafe: true
-            }
-        })
+        
     )
 }
