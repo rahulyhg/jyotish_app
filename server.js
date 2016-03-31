@@ -43,6 +43,9 @@ middlewares.forEach(function(middleware) {
 var Router = require('koa-router');
 var router = new Router();
 
+let pages = ['/mail','/advice','/auth','/profile','/users', '/mail/mail-list'];  
+pages.forEach(page=>router.get(page,require('./routes/app').get))
+
 // router.get('/', this.body = this.render('index'));
 router.get('/', require('./routes/frontpage').get);
 router.post('/api/login', require('./routes/login').post);
@@ -51,9 +54,7 @@ router.post('/api/login', require('./routes/login').post);
 router.post('/mail/create/', require('./mail/api').post);
 router.get('/mail/show/', require('./mail/api').get);
 
-let pages = ['/mail','/advice','/auth','/profile','/users'];
 
-pages.forEach(page=>router.get(page,require('./routes/app').get))
 
 const User = require('./models/user');
 const Mail = require('./models/mail');

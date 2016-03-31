@@ -10,16 +10,13 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
         enabled: true,
         requireBase: false
     });
+    
     $urlRouterProvider.otherwise('/mail');
 
     $stateProvider
         .state('mail', {
             url: '/mail',
-            template: mailtmpl
-                // controller: function($stateParams) {
-                //     this.active = $stateParams.active;
-                // },
-                // controllerAs: '$ctrl'
+            template: mailtmpl           
         })
         .state('advice', {
             url: '/advice',

@@ -1,18 +1,18 @@
-routing.$inject = ['$stateProvider'];
+routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-export default function routing($stateProvider) {
+export default function routing($stateProvider, $urlRouterProvider) {
+
+    // $urlRouterProvider.otherwise('/letters');
     $stateProvider
-        .state('letter', {
-            url: '/letter',
-            template: '<mails active=$ctrl.active ng-click=$ctrl.sent()></mails>',
-            controller: function($stateParams) {
-                this.active = $stateParams.active;
-            },
+        .state('letters', {
+            parent: 'mail',
+            url: '/letters',
+            template: '<mail-list></mail-list>',
             controllerAs: '$ctrl'
         })
         .state('letterOpen', {
-            parent: 'letter',
-            url: '/:letterId',
+            parent: 'mail',
+            url: '/letter:id',
             template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
             controller: function($stateParams) {
                 this.boxId = $stateParams.boxId;
