@@ -35765,22 +35765,33 @@ var app =
 	    }).state('auth', {
 	        url: '/auth',
 	        template: _auth2.default
+	    }).state('natalChart', {
+	        url: '/auth',
+	        template: _auth2.default
+	    }).state('profile', {
+	        url: '/auth',
+	        template: _auth2.default
+	    }).state('users', {
+	        url: '/auth',
+	        template: _auth2.default
 	    });
-
-	    //     // .state('box', {
-	    //     //   parent: 'mail',
-	    //     //   url: '/:boxId',
-	    //     //   template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
-	    //     //   controller: function($stateParams) {
-	    //     //     this.boxId = $stateParams.boxId;
-	    //     //   },
-	    //     //   controllerAs: '$ctrl'
-	    //     // })
-	    //     .state('users', {
-	    //         url: '/users',
-	    //         template: '<user-cards></user-cards>'
-	    //     });
 	}
+
+	// }
+
+	//     // .state('box', {
+	//     //   parent: 'mail',
+	//     //   url: '/:boxId',
+	//     //   template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
+	//     //   controller: function($stateParams) {
+	//     //     this.boxId = $stateParams.boxId;
+	//     //   },
+	//     //   controllerAs: '$ctrl'
+	//     // })
+	//     .state('users', {
+	//         url: '/users',
+	//         template: '<user-cards></user-cards>'
+	//     });
 
 	// var states = {
 
@@ -35790,7 +35801,7 @@ var app =
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-2\">\r\n            <div class=\"affix\">\r\n                <nav-section></nav-section>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-xs-10\">\r\n            <mail-lists></mail-lists>\r\n            <ui-view></ui-view>           \r\n        </div>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-2\">\r\n            <div class=\"affix\">\r\n                <nav-section></nav-section>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-xs-10\">            \r\n            <ui-view></ui-view>           \r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
 /* 15 */
@@ -35822,29 +35833,29 @@ var app =
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _mail = __webpack_require__(25);
+	var _mail = __webpack_require__(18);
 
 	var _mail2 = _interopRequireDefault(_mail);
 
-	var _mail3 = __webpack_require__(18);
+	var _mail3 = __webpack_require__(19);
 
 	var _mail4 = _interopRequireDefault(_mail3);
 
-	var _mailNav = __webpack_require__(19);
+	var _mailNav = __webpack_require__(20);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
-	var _mailGroups = __webpack_require__(21);
+	var _mailGroups = __webpack_require__(22);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
-	var _mailList = __webpack_require__(23);
+	var _mailList = __webpack_require__(24);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	console.dir(_angular2.default.module('mail.home', [_angularUiRouter2.default, _mailList2.default]));
+	// console.dir(angular.module('mail.home', [uirouter, mailLists]));
 
 	exports.default = _angular2.default.module('mail.home', [_angularUiRouter2.default, _mail2.default, _mailList2.default]).config(_mail4.default)
 	// .service('mailJob',mailJob)
@@ -35855,6 +35866,48 @@ var app =
 
 /***/ },
 /* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // MailJob.$inject = ['$http'];
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var MailJob = function () {
+		function MailJob($http) {
+			_classCallCheck(this, MailJob);
+
+			this._http = $http;
+		}
+
+		_createClass(MailJob, [{
+			key: 'RESTpost',
+			value: function RESTpost() {}
+		}, {
+			key: 'RESTget',
+			value: function RESTget() {
+				return this._http.get('https://jyotish.gift/mail/show/');
+			}
+		}]);
+
+		return MailJob;
+	}();
+
+	exports.default = _angular2.default.module('services.mail-job', []).service('mailJob', MailJob).name;
+
+/***/ },
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35873,6 +35926,9 @@ var app =
 	        url: '/letters',
 	        template: '<mail-list></mail-list>',
 	        controllerAs: '$ctrl'
+	        // resolve: {
+
+	        // }
 	    }).state('letterOpen', {
 	        parent: 'mail',
 	        url: '/letter:id',
@@ -35889,7 +35945,7 @@ var app =
 	// }
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35899,7 +35955,7 @@ var app =
 	});
 	exports.default = mailNav;
 
-	var _mailNav = __webpack_require__(20);
+	var _mailNav = __webpack_require__(21);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
@@ -35928,13 +35984,13 @@ var app =
 	}
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = "<!-- <div class=\"navbar navbar-default navbar-fixed-left left-section\"> -->\r\n    <p>\r\n        <button class=\"btn btn-primary center-block compose btn-lg\">COMPOSE</button>\r\n    </p>\r\n    <a class=\"title\" href=\"#\"> E-MAIL Angular - {{$ctrl.readMessages}}</a>\r\n<!-- </div> -->\r\n    <mail-groups></mail-groups>\r\n</ul>\r\n";
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35944,7 +36000,7 @@ var app =
 	});
 	exports.default = navbars;
 
-	var _mailGroups = __webpack_require__(22);
+	var _mailGroups = __webpack_require__(23);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
@@ -35979,13 +36035,13 @@ var app =
 	}
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"nav\">\r\n    <li ng-repeat=\"each in $ctrl.navbarsList\">\r\n        <a ng-href=\"#\" ng-click=$ctrl.makeActive(each)>{{each}}</a>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35997,11 +36053,11 @@ var app =
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _mailList = __webpack_require__(24);
+	var _mailList = __webpack_require__(25);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
 
-	var _mail = __webpack_require__(25);
+	var _mail = __webpack_require__(18);
 
 	var _mail2 = _interopRequireDefault(_mail);
 
@@ -36024,10 +36080,10 @@ var app =
 
 
 	        this._mailJob = mailJob;
-	        this.mailJob.RESTget().then(function (response) {
+	        this._mailJob.RESTget().then(function (response) {
 
 	            _this.resBody = response.data;
-	            _this.mails = updResponse(_this.resBody);
+	            _this.mails = _this.updResponse(_this.resBody);
 	        }).catch(function (e) {
 	            return console.log(e);
 	        });
@@ -36091,52 +36147,10 @@ var app =
 	exports.default = _angular2.default.module('component.mail', []).component('mailList', MailList).name;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails \r\n                      | filter:$ctrl.active=='All' \r\n                      ? '' : $ctrl.active | filter:senderName.Theme\">\r\n                    <td>\r\n                    <a href=\"#\"></a>{{letter.created}}</td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // MailJob.$inject = ['$http'];
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var MailJob = function () {
-		function MailJob($http) {
-			_classCallCheck(this, MailJob);
-
-			this._http = $http;
-		}
-
-		_createClass(MailJob, [{
-			key: 'RESTpost',
-			value: function RESTpost() {}
-		}, {
-			key: 'RESTget',
-			value: function RESTget() {
-				return this._http.get('https://jyotish.gift/mail/show/');
-			}
-		}]);
-
-		return MailJob;
-	}();
-
-	exports.default = _angular2.default.module('services.mail-job', []).service('mailJob', MailJob).name;
 
 /***/ }
 /******/ ]);

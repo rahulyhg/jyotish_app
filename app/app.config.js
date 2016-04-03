@@ -26,6 +26,24 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
             url: '/auth',
             template: authtmpl
         })
+        .state('natalChart', {
+            url: '/auth',
+            template: authtmpl
+        })        
+        .state('profile', {
+            url: '/auth',
+            template: authtmpl
+        })
+        .state('users', {
+            url: '/auth',
+            template: authtmpl
+        })
+        
+        
+
+    }
+        
+// }
 
     //     // .state('box', {
     //     //   parent: 'mail',
@@ -41,7 +59,6 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
     //         template: '<user-cards></user-cards>'
     //     });
 
-}
 
 // var states = {
 

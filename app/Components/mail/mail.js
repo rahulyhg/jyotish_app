@@ -8,7 +8,7 @@ import mailNav from './mail-nav/mail-nav';
 import mailBars from './mail-groups/mail-groups';
 import mailLists from './mail-list/mail-list';
 
- console.dir(angular.module('mail.home', [uirouter, mailLists]));
+ // console.dir(angular.module('mail.home', [uirouter, mailLists]));
 
 export default angular.module('mail.home', [uirouter, mailJob, mailLists])
 	.config(routing)

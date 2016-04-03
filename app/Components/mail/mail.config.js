@@ -9,6 +9,9 @@ export default function routing($stateProvider, $urlRouterProvider) {
             url: '/letters',
             template: '<mail-list></mail-list>',
             controllerAs: '$ctrl'
+            // resolve: {
+
+            // }
         })
         .state('letterOpen', {
             parent: 'mail',

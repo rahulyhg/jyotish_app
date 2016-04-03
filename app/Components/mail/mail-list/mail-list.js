@@ -8,10 +8,10 @@ export class controller {
         let [status, unread] = [false, false];
 
         this._mailJob = mailJob;
-        this.mailJob.RESTget().then((response) => {
+        this._mailJob.RESTget().then((response) => {
 
             this.resBody = response.data;
-            this.mails = updResponse(this.resBody);
+            this.mails = this.updResponse(this.resBody);
 
         }).catch(e => console.log(e));       
 
