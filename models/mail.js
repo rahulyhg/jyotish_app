@@ -47,7 +47,8 @@ var mailsSchema = new mongoose.Schema({
   },
   inBox: {
     type: String,
-    required: true    
+    required: true,
+    default: 'Sent' 
   },
   status: {
     type: Boolean,

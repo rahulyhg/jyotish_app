@@ -7,10 +7,11 @@ import routing from './mail.config';
 import mailNav from './mail-nav/mail-nav';
 import mailBars from './mail-groups/mail-groups';
 import mailLists from './mail-list/mail-list';
+import mailLetter from './mail-letter/mail-letter';
 
  // console.dir(angular.module('mail.home', [uirouter, mailLists]));
 
-export default angular.module('mail.home', [uirouter, mailJob, mailLists])
+export default angular.module('mail.home', [uirouter, mailJob, mailLists, mailLetter])
 	.config(routing)
 	// .service('mailJob',mailJob)
 	// .component('mail', mailNav)	

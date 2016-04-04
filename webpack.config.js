@@ -30,7 +30,7 @@ module.exports = {
         aggregateTimeout: 300
     },
 
-    devtool: NODE_ENV == 'production' ? "cheap-inline-module-source-map" : null,
+    devtool: NODE_ENV == 'production' ? "cheap-module-source-map" : null,
 
     plugins: [
         new webpack.NoErrorsPlugin(),
@@ -78,7 +78,7 @@ module.exports = {
     }
 }
 
-console.log(module.exports.output)
+// console.log(new Date.now())
 
 if (NODE_ENV != 'production') {
     module.exports.plugins.push(

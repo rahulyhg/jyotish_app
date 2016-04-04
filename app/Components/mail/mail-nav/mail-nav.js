@@ -7,13 +7,7 @@ export default function mailNav() {
         controller: function() {
 
             this.readMessages = 3;
-            this.active = 'All';
-
-            //     this.active = navName;
-            //     console.log(this.active);
-            //     this.readMessages = navName == 'All' ? navbars.length : mails.filter(x => x.inBox == navName).length;
-            // };/ this.makeActive = function(navName) {
-            //
+            this.active = 'All';            
 
             this.sent = function() {
                 return this.active;

@@ -8,11 +8,10 @@
     <div class="panel-body">
         <table class="table table-default">
             <tbody class="mail-box">
-                <tr ng-repeat="letter in $ctrl.mails 
-                      | filter:$ctrl.active=='All' 
-                      ? '' : $ctrl.active | filter:senderName.Theme">
-                    <td>
-                    <a href="#"></a>{{letter.created}}</td>
+                <tr ng-repeat="letter in $ctrl.mails">
+                    <!-- <td>{{letter.id}}</td> -->
+                    <td><a ui-sref="letterOpen({id: letter._id})">{{letter._id}}</a></td>
+                    <td>{{letter.created}}</td>
                     <td>{{letter.from}}</td>
                     <td>{{letter.Theme}}</td>
                     <td>{{letter.nameSender}}</td>

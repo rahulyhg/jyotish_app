@@ -1,0 +1,23 @@
+<form class="form" ng-submit="">
+
+    <div class="bs-example" data-example-id="textarea-form-control">
+        <div class="bs-callout bs-callout-danger">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Send to: </label>
+                <h3><small class="text-danger">Test sending from <span class="lead">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>
+                <input type="email" class="form-control" placeholder="To" ng-model="$ctrl.mm.to">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Theme" ng-model="$ctrl.mm.subject">
+            </div>
+            <div class="form-group">
+                <label>message:</label>
+                <textarea class="form-control" rows="3" placeholder="message text" ng-model="$ctrl.mmtextLetter"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default pull-left" ng-click=$ctrl.send()>Send</button>
+                <a ui-sref="letters" class="btn btn-primary pull-right">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>

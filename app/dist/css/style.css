@@ -1,73 +1,73 @@
 /*Oleg Lustenko css created 23.03.2016*/
 
+body {
+    font-family: LI!important;
+    font-size: 32px!important;
+}
+
+.btn {
+	font-size:35px!important;
+}
+
 @font-face {
-	font-family: LI;
-	src:url(9449.ttf);
-	font-size: 35px;
+    font-family: LI;
+    src: url(9449.ttf);
+    font-size: 35px;
 }
 
 .navbar-right {
-	font-size:45px!important;
+    font-size: 45px!important;
 }
 
 .active {
-	background-color: gray
+    background-color: gray
 }
 
 .navbar-fixed-left {
-  width: 200px;
-  position: fixed;
-  border-radius: 0;
-  height: 100%;
+    width: 200px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
 }
 
 .navbar-fixed-left .navbar-nav > li {
-  float: none;  /* Cancel default li float: left */
-  width: 209px;
+    float: none;
+    /* Cancel default li float: left */
+    width: 209px;
 }
 
 .navbar-fixed-left + .container {
-  padding-left: 200px;
+    padding-left: 200px;
 }
+
 
 /* On using dropdown menu (To right shift popuped) */
+
 .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
-  margin-top: -50px;
-  margin-left: 200px;
+    margin-top: -50px;
+    margin-left: 200px;
 }
 
-.nav-color {background-color:rgba(0,0,0,0.8)}
-	.nav-color li > a {
-		color: white!important;
-	}
-	.nav-color li > a:hover {	
-		color: #337AB7!important;
-	}
-
-	
-body {
-	font-family: LI!important;
-	font-size: 32px!important;
-}
+.nav-color {background-color: rgba(0, 0, 0, 0.8)}
+	.nav-color li > a {color: white!important;}
+		.nav-color li > a:hover {color: #337AB7!important;}
 
 .left-section {
-	/*font-size: 32px!important;*/
+    /*font-size: 32px!important;*/
 }
 
-._big-text{
-	font-size:55px!important;
-	/*color:white!important;*/
+._big-text {
+    font-size: 55px!important;
+    /*color:white!important;*/
 }
 
-.mail-box {
-	font-size:30px;
-	color:#000000;
-}
-
-.mail-box tr:hover{
-	color:rgb(255, 111, 111);
-}
+.mail-box {font-size: 30px;color: #000000;}
+	.mail-box tr:hover {color: rgb(255, 111, 111);}
 
 .compose {
-	margin-top:35px
+    margin-top: 35px
+}
+
+.form-control {
+    font-size: 35px!important;
 }

@@ -1,37 +1,38 @@
 routing.$inject = ['$stateProvider', '$urlRouterProvider'];
-import mailJob from './mail.service/mail.api';
+import UserService from './user.service/user.service';
 
 export default function routing($stateProvider, $urlRouterProvider) {
 
     // $urlRouterProvider.otherwise('/letters');
     $stateProvider
-        .state('letters', {
-            parent: 'mail',
-            url: '/letters',
-            template: '<mail-list mails = "$ctrl.mails"></mail-list>',
+        .state('usersList', {
+            // parent: 'mail',
+            url: '/usersList',
+            template: '<user-list users="$ctrl.users"></user-list>',
             controllerAs: '$ctrl',
             resolve: {
-                updateMails: function(mailJob) {
+                updateUsers: function(UserService) {
 
-                    return mailJob.RESTget()
-                        .then(response => mailJob.updResponse(response.data))
+                    return UserService.RESTget()
+                        .then(response => UserService.updResponse(response.data))
                         .catch(e => {
                             console.log(e);
                             return {}
                         });
+
                 }
             },
-            controller: function(updateMails, $stateParams) {
-
-                this.mails = updateMails;
+            controller: function(updateUsers) {
+                console.log(updateUsers);
+                this.users = updateUsers;
                 // $stateParams.mails = this.mails;
                 // console.log('privet', $stateParams,this.mails);
             }
         })
-        .state('letterOpen', {
-            parent: 'mail',
-            url: '/letters/:id',
-            template: '<letter></letter>',
+        .state('userOpen', {
+            // parent: 'mail',
+            url: '/userList:id',
+            template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
             controller: function($stateParams) {
                 this.boxId = $stateParams.boxId;
             },

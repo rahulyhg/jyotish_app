@@ -61,15 +61,20 @@ var app =
 
 	var _appConfig2 = _interopRequireDefault(_appConfig);
 
-	var _mail = __webpack_require__(17);
+	var _mail = __webpack_require__(18);
 
 	var _mail2 = _interopRequireDefault(_mail);
 
+	var _users = __webpack_require__(29);
+
+	var _users2 = _interopRequireDefault(_users);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_angular2.default.module('app', [_angularUiRouter2.default, _mail2.default]).config(_appConfig2.default);
 	// import mailJob from './Components/mail/mail.service/mail.api'
 	// import 'bootstrap/dist/css/bootstrap-min.css';
+
+	_angular2.default.module('app', [_angularUiRouter2.default, _mail2.default, _users2.default]).config(_appConfig2.default);
 
 /***/ },
 /* 1 */
@@ -35743,6 +35748,10 @@ var app =
 
 	var _auth2 = _interopRequireDefault(_auth);
 
+	var _usersList = __webpack_require__(17);
+
+	var _usersList2 = _interopRequireDefault(_usersList);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
@@ -35754,7 +35763,7 @@ var app =
 	        requireBase: false
 	    });
 
-	    $urlRouterProvider.otherwise('/mail');
+	    $urlRouterProvider.otherwise('/mail/letters');
 
 	    $stateProvider.state('mail', {
 	        url: '/mail',
@@ -35766,14 +35775,14 @@ var app =
 	        url: '/auth',
 	        template: _auth2.default
 	    }).state('natalChart', {
-	        url: '/auth',
+	        url: '/chart',
 	        template: _auth2.default
 	    }).state('profile', {
-	        url: '/auth',
+	        url: '/profile',
 	        template: _auth2.default
 	    }).state('users', {
-	        url: '/auth',
-	        template: _auth2.default
+	        url: '/users',
+	        template: _usersList2.default
 	    });
 	}
 
@@ -35817,6 +35826,12 @@ var app =
 
 /***/ },
 /* 17 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"panel panel-info\" ng-repeat=\"names in $ctrl.usersList\">\r\n    <div class=\"panel-heading\">\r\n        <button ng-click=showUsers() class=\"btn btn-info \">Show users</button>\r\n        <h3 class=\"panel-title pull-right\">{{names.displayName}}</h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <div class=\"row\">\r\n            <div class=\" col-md-9 col-lg-9 \">\r\n                <table class=\"table table-user-information\">\r\n                    <tbody>\r\n                        <tr>\r\n                            <td><img ng-src=\"{{names.urlPic}}\"></img>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>Дата рождения</td>\r\n                            <td>{{names.birthday}}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>Пол</td>\r\n                            <td>{{names.gender}}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>Адрес</td>\r\n                            <td>{{names.aboutMe}}</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>Email</td>\r\n                            <td>\r\n                                <a ng-href=\"mailto:{{names.email}}\">{{names.email}}</a>\r\n                            </td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35833,31 +35848,35 @@ var app =
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _mail = __webpack_require__(18);
+	var _mail = __webpack_require__(19);
 
 	var _mail2 = _interopRequireDefault(_mail);
 
-	var _mail3 = __webpack_require__(19);
+	var _mail3 = __webpack_require__(20);
 
 	var _mail4 = _interopRequireDefault(_mail3);
 
-	var _mailNav = __webpack_require__(20);
+	var _mailNav = __webpack_require__(21);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
-	var _mailGroups = __webpack_require__(22);
+	var _mailGroups = __webpack_require__(23);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
-	var _mailList = __webpack_require__(24);
+	var _mailList = __webpack_require__(25);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
+
+	var _mailLetter = __webpack_require__(27);
+
+	var _mailLetter2 = _interopRequireDefault(_mailLetter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// console.dir(angular.module('mail.home', [uirouter, mailLists]));
 
-	exports.default = _angular2.default.module('mail.home', [_angularUiRouter2.default, _mail2.default, _mailList2.default]).config(_mail4.default)
+	exports.default = _angular2.default.module('mail.home', [_angularUiRouter2.default, _mail2.default, _mailList2.default, _mailLetter2.default]).config(_mail4.default)
 	// .service('mailJob',mailJob)
 	// .component('mail', mailNav)	
 	.component('navSection', (0, _mailNav2.default)()).component('mailGroups', (0, _mailGroups2.default)())
@@ -35865,13 +35884,13 @@ var app =
 	.name;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // MailJob.$inject = ['$http'];
@@ -35885,30 +35904,60 @@ var app =
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var MailJob = function () {
-		function MailJob($http) {
-			_classCallCheck(this, MailJob);
+	    function MailJob($http) {
+	        _classCallCheck(this, MailJob);
 
-			this._http = $http;
-		}
+	        this._http = $http;
+	    }
 
-		_createClass(MailJob, [{
-			key: 'RESTpost',
-			value: function RESTpost() {}
-		}, {
-			key: 'RESTget',
-			value: function RESTget() {
-				return this._http.get('https://jyotish.gift/mail/show/');
-			}
-		}]);
+	    _createClass(MailJob, [{
+	        key: 'RESTpost',
+	        value: function RESTpost(params) {
+	            var req = {
+	                method: 'POST',
+	                url: 'https://jyotish.gift/mail/create/',
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                },
+	                data: params
+	            };
 
-		return MailJob;
+	            return this._http(req);
+	        }
+	    }, {
+	        key: 'RESTget',
+	        value: function RESTget() {
+	            return this._http.get('https://jyotish.gift/mail/show/');
+	        }
+	    }, {
+	        key: 'updResponse',
+	        value: function updResponse(query) {
+	            var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+	            return query.map(function (x) {
+	                return Object.keys(x).reduce(function (a, b) {
+
+	                    if (b == 'textLetter' && b.length) {
+	                        a[b] = x[b].slice(0, 5) + '...';
+	                    } else if (b == 'created') {
+	                        a[b] = month[1 + +x[b].slice(5, 7)] + ' ' + x[b].slice(8, 10);
+	                    } else {
+	                        a[b] = x[b];
+	                    }
+	                    return a;
+	                }, {});
+	            });
+	        }
+	    }]);
+
+	    return MailJob;
 	}();
 
 	exports.default = _angular2.default.module('services.mail-job', []).service('mailJob', MailJob).name;
 
 /***/ },
-/* 19 */
-/***/ function(module, exports) {
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -35916,23 +35965,43 @@ var app =
 	    value: true
 	});
 	exports.default = routing;
-	routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 
+	var _mail = __webpack_require__(19);
+
+	var _mail2 = _interopRequireDefault(_mail);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 	function routing($stateProvider, $urlRouterProvider) {
 
 	    // $urlRouterProvider.otherwise('/letters');
 	    $stateProvider.state('letters', {
 	        parent: 'mail',
 	        url: '/letters',
-	        template: '<mail-list></mail-list>',
-	        controllerAs: '$ctrl'
-	        // resolve: {
+	        template: '<mail-list mails = "$ctrl.mails"></mail-list>',
+	        controllerAs: '$ctrl',
+	        resolve: {
+	            updateMails: function updateMails(mailJob) {
 
-	        // }
+	                return mailJob.RESTget().then(function (response) {
+	                    return mailJob.updResponse(response.data);
+	                }).catch(function (e) {
+	                    console.log(e);
+	                    return {};
+	                });
+	            }
+	        },
+	        controller: function controller(updateMails, $stateParams) {
+
+	            this.mails = updateMails;
+	            // $stateParams.mails = this.mails;
+	            // console.log('privet', $stateParams,this.mails);
+	        }
 	    }).state('letterOpen', {
 	        parent: 'mail',
-	        url: '/letter:id',
-	        template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
+	        url: '/letters/:id',
+	        template: '<letter></letter>',
 	        controller: function controller($stateParams) {
 	            this.boxId = $stateParams.boxId;
 	        },
@@ -35945,7 +36014,7 @@ var app =
 	// }
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35955,7 +36024,7 @@ var app =
 	});
 	exports.default = mailNav;
 
-	var _mailNav = __webpack_require__(21);
+	var _mailNav = __webpack_require__(22);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
@@ -35970,12 +36039,6 @@ var app =
 	            this.readMessages = 3;
 	            this.active = 'All';
 
-	            //     this.active = navName;
-	            //     console.log(this.active);
-	            //     this.readMessages = navName == 'All' ? navbars.length : mails.filter(x => x.inBox == navName).length;
-	            // };/ this.makeActive = function(navName) {
-	            //
-
 	            this.sent = function () {
 	                return this.active;
 	            };
@@ -35984,13 +36047,13 @@ var app =
 	}
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
-	module.exports = "<!-- <div class=\"navbar navbar-default navbar-fixed-left left-section\"> -->\r\n    <p>\r\n        <button class=\"btn btn-primary center-block compose btn-lg\">COMPOSE</button>\r\n    </p>\r\n    <a class=\"title\" href=\"#\"> E-MAIL Angular - {{$ctrl.readMessages}}</a>\r\n<!-- </div> -->\r\n    <mail-groups></mail-groups>\r\n</ul>\r\n";
+	module.exports = "<!-- <div class=\"navbar navbar-default navbar-fixed-left left-section\"> -->\r\n    <p>\r\n        <a ui-sref=\"letterOpen\"class=\"btn btn-primary center-block compose btn-lg\">COMPOSE</a>\r\n    </p>\r\n    <a class=\"title\" href=\"#\"> E-MAIL Angular - {{$ctrl.readMessages}}</a>\r\n<!-- </div> -->\r\n    <mail-groups></mail-groups>\r\n</ul>\r\n";
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36000,7 +36063,7 @@ var app =
 	});
 	exports.default = navbars;
 
-	var _mailGroups = __webpack_require__(23);
+	var _mailGroups = __webpack_require__(24);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
@@ -36035,13 +36098,13 @@ var app =
 	}
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"nav\">\r\n    <li ng-repeat=\"each in $ctrl.navbarsList\">\r\n        <a ng-href=\"#\" ng-click=$ctrl.makeActive(each)>{{each}}</a>\r\n    </li>\r\n</ul>\r\n";
+	module.exports = "<ul class=\"nav\">\r\n    <li ng-repeat=\"each in $ctrl.navbarsList\">\r\n        <a ui-sref-active=\"active\">{{each}}</a>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36051,13 +36114,11 @@ var app =
 	});
 	exports.controller = undefined;
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _mailList = __webpack_require__(25);
+	var _mailList = __webpack_require__(26);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
 
-	var _mail = __webpack_require__(18);
+	var _mail = __webpack_require__(19);
 
 	var _mail2 = _interopRequireDefault(_mail);
 
@@ -36069,77 +36130,45 @@ var app =
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var controller = exports.controller = function () {
-	    function controller(mailJob) {
-	        var _this = this;
+	var controller = exports.controller = function controller(mailJob) {
+	    _classCallCheck(this, controller);
 
-	        _classCallCheck(this, controller);
-
-	        var status = false;
-	        var unread = false;
+	    var status = false;
+	    var unread = false;
 
 
-	        this._mailJob = mailJob;
-	        this._mailJob.RESTget().then(function (response) {
+	    this.da = function (letter) {
+	        letter.status != letter.status;
+	    };
 
-	            _this.resBody = response.data;
-	            _this.mails = _this.updResponse(_this.resBody);
-	        }).catch(function (e) {
-	            return console.log(e);
-	        });
-
-	        this.da = function (letter) {
-	            letter.status != letter.status;
-	        };
-	        this.createFilter = function () {
-	            if (unread) {
-	                unread = false;
-	                this.mails = this.mails;
-	            } else {
-	                this.mails = this.mails.filter(function (a) {
-	                    return a.status;
-	                });
-	                unread = true;
-	            }
-	        };
-	        this.filter = function (status) {
-	            return status = 'All' ? '' : status;
-	        };
-	    }
-
-	    _createClass(controller, [{
-	        key: 'updResponse',
-	        value: function updResponse(query) {
-	            var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-	            return query.map(function (x) {
-	                return Object.keys(x).reduce(function (a, b) {
-
-	                    if (b == 'textLetter' && b.length) {
-	                        a[b] = x[b].slice(0, 5) + '...';
-	                    } else if (b == 'created') {
-	                        a[b] = month[1 + +x[b].slice(5, 7)] + ' ' + x[b].slice(8, 10);
-	                    } else {
-	                        a[b] = x[b];
-	                    }
-	                    return a;
-	                }, {});
+	    this.createFilter = function () {
+	        if (unread) {
+	            unread = false;
+	            this.mails = this.mails;
+	        } else {
+	            this.mails = this.mails.filter(function (a) {
+	                return a.status;
 	            });
+	            unread = true;
 	        }
-	        // this.unreadCounter = this.mails.filter(x=>x.inBox == this.active);
+	    };
 
-	    }]);
+	    this.filter = function (status) {
+	        return status = 'All' ? '' : status;
+	    };
+	}
 
-	    return controller;
-	}();
+	// this.unreadCounter = this.mails.filter(x=>x.inBox == this.active);
+	;
 
-	console.dir(controller);
+	// console.dir(controller)
 
 	var MailList = {
 	    template: _mailList2.default,
 	    bindings: {
 	        active: '=',
-	        sent: '&'
+	        sent: '&',
+	        mails: '='
 	    },
 	    controller: controller
 	};
@@ -36147,10 +36176,273 @@ var app =
 	exports.default = _angular2.default.module('component.mail', []).component('mailList', MailList).name;
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails \r\n                      | filter:$ctrl.active=='All' \r\n                      ? '' : $ctrl.active | filter:senderName.Theme\">\r\n                    <td>\r\n                    <a href=\"#\"></a>{{letter.created}}</td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails\">\r\n                    <!-- <td>{{letter.id}}</td> -->\r\n                    <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter._id}}</a></td>\r\n                    <td>{{letter.created}}</td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.mailLetter = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _mailLetter = __webpack_require__(28);
+
+	var _mailLetter2 = _interopRequireDefault(_mailLetter);
+
+	var _mail = __webpack_require__(19);
+
+	var _mail2 = _interopRequireDefault(_mail);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var mailLetter = exports.mailLetter = function () {
+		function mailLetter(mailJob, $scope) {
+			_classCallCheck(this, mailLetter);
+
+			this._mailJob = mailJob;
+			console.log(this.params, this.mm);
+			this.params = $scope.mm;
+			console.log(this.params, this.mm);
+		}
+
+		_createClass(mailLetter, [{
+			key: 'send',
+			value: function send() {
+				console.log(this.params);
+			}
+		}]);
+
+		return mailLetter;
+	}();
+
+	;
+
+	var mailComponent = {
+
+		bindings: {
+			params: '=mm'
+		},
+
+		template: _mailLetter2.default,
+		controller: mailLetter
+	};
+
+	exports.default = _angular2.default.module('component.letter', []).component('letter', mailComponent).name;
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.mm.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.mm.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.mmtextLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _angularUiRouter = __webpack_require__(3);
+
+	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
+
+	var _usersList = __webpack_require__(30);
+
+	var _usersList2 = _interopRequireDefault(_usersList);
+
+	var _users = __webpack_require__(31);
+
+	var _users2 = _interopRequireDefault(_users);
+
+	var _user = __webpack_require__(32);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module('module.users', [_angularUiRouter2.default, _usersList2.default]).config(_users2.default).name;
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.controller = undefined;
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _usersList = __webpack_require__(17);
+
+	var _usersList2 = _interopRequireDefault(_usersList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var controller = exports.controller = function controller() {
+		_classCallCheck(this, controller);
+	};
+
+	var userComponent = {
+		bindings: {
+			usersList: '=users'
+		},
+		template: _usersList2.default,
+		controller: controller
+	};
+
+	exports.default = _angular2.default.module('component.user-list', []).component('userList', userComponent).name;
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = routing;
+
+	var _user = __webpack_require__(32);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	routing.$inject = ['$stateProvider', '$urlRouterProvider'];
+	function routing($stateProvider, $urlRouterProvider) {
+
+	    // $urlRouterProvider.otherwise('/letters');
+	    $stateProvider.state('usersList', {
+	        // parent: 'mail',
+	        url: '/usersList',
+	        template: '<user-list users="$ctrl.users"></user-list>',
+	        controllerAs: '$ctrl',
+	        resolve: {
+	            updateUsers: function updateUsers(UserService) {
+
+	                return UserService.RESTget().then(function (response) {
+	                    return UserService.updResponse(response.data);
+	                }).catch(function (e) {
+	                    console.log(e);
+	                    return {};
+	                });
+	            }
+	        },
+	        controller: function controller(updateUsers) {
+	            console.log(updateUsers);
+	            this.users = updateUsers;
+	            // $stateParams.mails = this.mails;
+	            // console.log('privet', $stateParams,this.mails);
+	        }
+	    }).state('userOpen', {
+	        // parent: 'mail',
+	        url: '/userList:id',
+	        template: '<mail-list box-id="$ctrl.boxId"></mail-list>',
+	        controller: function controller($stateParams) {
+	            this.boxId = $stateParams.boxId;
+	        },
+	        controllerAs: '$ctrl'
+	    });
+	}
+
+	// var states = {
+
+	// }
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // MailJob.$inject = ['$http'];
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var UserService = function () {
+	  function UserService($http) {
+	    _classCallCheck(this, UserService);
+
+	    this._http = $http;
+	  }
+
+	  _createClass(UserService, [{
+	    key: 'RESTpost',
+	    value: function RESTpost() {}
+	  }, {
+	    key: 'RESTget',
+	    value: function RESTget() {
+	      return this._http.get('https://jyotish.gift/auth/login/register/');
+	    }
+	  }, {
+	    key: 'updResponse',
+	    value: function updResponse(query) {
+	      // let month = ['January', 'February', 'March', 'April',
+	      //     'May', 'June', 'July', 'August',
+	      //     'September', 'October', 'November', 'December'
+	      // ];
+
+	      return query;
+	      //     .map(x => Object.keys(x)
+	      //         .reduce((a, b) => {
+
+	      //             if (b == 'textLetter' && b.length) {
+	      //                 a[b] = x[b].slice(0, 5) + '...'
+	      //             } else if (b == 'created') {
+	      //                 a[b] = month[1 + +x[b].slice(5, 7)] + ' ' + x[b].slice(8, 10)
+	      //             } else {
+	      //                 a[b] = x[b]
+	      //             }
+	      //             return a
+	      //         }, {})
+	      //     )
+	    }
+	  }]);
+
+	  return UserService;
+	}();
+
+	exports.default = _angular2.default.module('services.users', []).service('mailJob', UserService).name;
 
 /***/ }
 /******/ ]);
