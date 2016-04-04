@@ -4,7 +4,7 @@ import angular from 'angular';
 
 export class controller {
 
-    constructor(mailJob, $stateParams) {
+    constructor(mailJob, $state) {
         let [status, unread] = [false, false];
 
         this.da = function(letter) {
@@ -24,7 +24,10 @@ export class controller {
 
         this.filter = (status) => status = 'All' ? '' : status;
 
-        this.del = UID => this._mailJob.RESTdelete(UID)
+        this.del = UID => {
+            this._mailJob.RESTdelete(UID)
+            $state.go($state.current, {}, {reload: true});
+        }
             // console.log(...arguments)
         
     }

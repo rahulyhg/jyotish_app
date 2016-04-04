@@ -22,7 +22,7 @@ export default function routing($stateProvider, $urlRouterProvider) {
                         });
                 }
             },
-            controller: function(updateMails, $stateParams) {
+            controller: function(updateMails) {
 
                 this.mails = updateMails;
                 // $stateParams.mails = this.mails;

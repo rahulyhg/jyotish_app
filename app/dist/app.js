@@ -35998,7 +35998,7 @@ var app =
 	                });
 	            }
 	        },
-	        controller: function controller(updateMails, $stateParams) {
+	        controller: function controller(updateMails) {
 
 	            this.mails = updateMails;
 	            // $stateParams.mails = this.mails;
@@ -36136,7 +36136,7 @@ var app =
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var controller = exports.controller = function controller(mailJob, $stateParams) {
+	var controller = exports.controller = function controller(mailJob, $state) {
 	    var _this = this;
 
 	    _classCallCheck(this, controller);
@@ -36167,7 +36167,8 @@ var app =
 	    };
 
 	    this.del = function (UID) {
-	        return _this._mailJob.RESTdelete(UID);
+	        _this._mailJob.RESTdelete(UID);
+	        $state.go($state.current, {}, { reload: true });
 	    };
 	    // console.log(...arguments)
 	}
