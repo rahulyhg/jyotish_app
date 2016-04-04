@@ -26,6 +26,7 @@ class MailJob {
     }
 
     updResponse(query) {
+        if(!query.length) return;
         let month = ['January', 'February', 'March', 'April',
             'May', 'June', 'July', 'August',
             'September', 'October', 'November', 'December'

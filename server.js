@@ -51,8 +51,8 @@ router.get('/', require('./routes/frontpage').get);
 router.post('/api/login', require('./routes/login').post);
 // router.post('/logout', require('./routes/logout').post);
 // router.register('/', require('./routes/login').post);
-router.post('/mail/create/', require('./mail/api').post);
-router.get('/mail/show/', require('./mail/api').get);
+router.post('/api/mail/create/', require('./mail/api').post);
+router.get('/api/mail/show/', require('./mail/api').get);
 
 const User = require('./models/user');
 const Mail = require('./models/mail');

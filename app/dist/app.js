@@ -35932,6 +35932,7 @@ var app =
 	    }, {
 	        key: 'updResponse',
 	        value: function updResponse(query) {
+	            if (!query.length) return;
 	            var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 	            return query.map(function (x) {
@@ -35985,10 +35986,11 @@ var app =
 	            updateMails: function updateMails(mailJob) {
 
 	                return mailJob.RESTget().then(function (response) {
-	                    return mailJob.updResponse(response.data);
+	                    console.dir(response);
+	                    mailJob.updResponse(response.data);
 	                }).catch(function (e) {
 	                    console.log(e);
-	                    return {};
+	                    return [];
 	                });
 	            }
 	        },
@@ -36234,7 +36236,7 @@ var app =
 
 	var mailComponent = {
 		bindings: {
-			params: '=mm'
+			params: '=ngModel'
 		},
 		template: _mailLetter2.default,
 		controller: mailLetter
@@ -36246,7 +36248,7 @@ var app =
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.mm.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.mm.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.mmtextLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
+	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.mm.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.mm.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.mm.textLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
 
 /***/ },
 /* 29 */

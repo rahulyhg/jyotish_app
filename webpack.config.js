@@ -35,7 +35,7 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.EnvironmentPlugin('NODE_ENV'),
-        new ngAnnotatePlugin({add: true})
+        new ngAnnotatePlugin({add: true}),
         // new webpack.optimize.UglifyJsPlugin()
             // compress: {
             //     warnings: false,
@@ -80,8 +80,8 @@ module.exports = {
 
 // console.log(new Date.now())
 
-if (NODE_ENV != 'production') {
-    module.exports.plugins.push(
+// if (NODE_ENV != 'production') {
+//     module.exports.plugins.push(
         
-    )
-}
+//     )
+// }

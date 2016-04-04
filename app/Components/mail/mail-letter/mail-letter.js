@@ -21,7 +21,7 @@ export class mailLetter {
 
 let mailComponent = {
 	bindings:{
-		params:'=mm'
+		params:'=ngModel'
 	},
 	template: lettertmpl,
 	controller: mailLetter
