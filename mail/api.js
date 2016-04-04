@@ -15,6 +15,6 @@ exports.get = function*(next){
 };
 
 exports.delete = function*(next) {
-	let del = yield Mail.findOneAndRemove(this.request.id).exec();
+	let del = yield Mail.findOneAndRemove(this.id).exec();
 	this.body = del;
 }

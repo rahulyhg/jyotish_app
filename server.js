@@ -53,7 +53,7 @@ router.post('/api/login', require('./routes/login').post);
 // router.register('/', require('./routes/login').post);
 router.post('/api/mail/create/', require('./mail/api').post);
 router.get('/api/mail/show/', require('./mail/api').get);
-router.delete('/api/mail/del/', require('./mail/api').delete);
+router.delete('/api/mail/del/:id', require('./mail/api').delete);
 
 
 const User = require('./models/user');
