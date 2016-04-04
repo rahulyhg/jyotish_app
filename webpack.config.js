@@ -35,18 +35,23 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.EnvironmentPlugin('NODE_ENV'),
-        new ngAnnotatePlugin({add: true}),
-        // new webpack.optimize.UglifyJsPlugin()
-            // compress: {
-            //     warnings: false,
-            //     drop_console: true,
-            //     // mangle: false
-            //     // unsafe: true
-            // },
-            // mangle: {
-            //     except: ['$', 'exports', 'require', '$inject', 'import']
-            // }
-        
+        new ngAnnotatePlugin({ add: true }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     mangle: {
+        //         except: ['$', 'exports', 'require', '$inject', 'import']
+        //     }
+        // })
+        // }})
+        // compress: {
+        //     warnings: false,
+        //     drop_console: true,
+        //     // mangle: false
+        //     // unsafe: true
+        // },
+        // mangle: {
+        //     except: ['$', 'exports', 'require', '$inject', 'import']
+        // }
+
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: 'common'
         // })
@@ -69,7 +74,7 @@ module.exports = {
                 // include: appFolder,
                 exclude: /node_modules/,
                 loader: 'babel?presets[]=es2015,plugins[]=transform-es2015-modules-commonjs'
-                	
+
             },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.html$/, loader: 'html' },
@@ -82,6 +87,6 @@ module.exports = {
 
 // if (NODE_ENV != 'production') {
 //     module.exports.plugins.push(
-        
+
 //     )
 // }

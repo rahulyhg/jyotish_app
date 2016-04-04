@@ -14,10 +14,8 @@ export default function routing($stateProvider, $urlRouterProvider) {
                 updateMails: function(mailJob) {
 
                     return mailJob.RESTget()
-                        .then(response => {
-                            console.dir(response)
-                            mailJob.updResponse(response.data)
-                        })
+                        .then(response => mailJob.updResponse(response.data)
+                        )
                         .catch(e => {
                             console.log(e);
                             return []

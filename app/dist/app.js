@@ -35915,7 +35915,7 @@ var app =
 	        value: function RESTpost(params) {
 	            var req = {
 	                method: 'POST',
-	                url: 'https://jyotish.gift/mail/create/',
+	                url: 'https://jyotish.gift/api/mail/create/',
 	                headers: {
 	                    'Content-Type': 'application/x-www-form-urlencoded'
 	                },
@@ -35927,7 +35927,7 @@ var app =
 	    }, {
 	        key: 'RESTget',
 	        value: function RESTget() {
-	            return this._http.get('https://jyotish.gift/mail/show/');
+	            return this._http.get('https://jyotish.gift/api/mail/show/');
 	        }
 	    }, {
 	        key: 'updResponse',
@@ -35986,8 +35986,7 @@ var app =
 	            updateMails: function updateMails(mailJob) {
 
 	                return mailJob.RESTget().then(function (response) {
-	                    console.dir(response);
-	                    mailJob.updResponse(response.data);
+	                    return mailJob.updResponse(response.data);
 	                }).catch(function (e) {
 	                    console.log(e);
 	                    return [];
