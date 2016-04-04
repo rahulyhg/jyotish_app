@@ -36233,11 +36233,9 @@ var app =
 	;
 
 	var mailComponent = {
-
 		bindings: {
 			params: '=mm'
 		},
-
 		template: _mailLetter2.default,
 		controller: mailLetter
 	};

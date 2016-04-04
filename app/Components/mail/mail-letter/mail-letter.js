@@ -9,8 +9,7 @@ export class mailLetter {
 		this._mailJob = mailJob;
 		console.log(this.params, this.mm)
 		this.params = $scope.mm;
-		console.log(this.params, this.mm)
-		
+		console.log(this.params, this.mm)		
 
 	}
 
@@ -21,11 +20,9 @@ export class mailLetter {
 };
 
 let mailComponent = {
-
 	bindings:{
 		params:'=mm'
 	},
-
 	template: lettertmpl,
 	controller: mailLetter
 };
