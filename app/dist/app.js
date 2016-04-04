@@ -35930,6 +35930,11 @@ var app =
 	            return this._http.get('https://jyotish.gift/api/mail/show/');
 	        }
 	    }, {
+	        key: 'RESTdelete',
+	        value: function RESTdelete(UID) {
+	            return this._http.delete('https://jyotish.gift/api/mail/del/' + UID);
+	        }
+	    }, {
 	        key: 'updResponse',
 	        value: function updResponse(query) {
 	            if (!query.length) return;
@@ -36131,7 +36136,9 @@ var app =
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var controller = exports.controller = function controller(mailJob) {
+	var controller = exports.controller = function controller(mailJob, $stateParams) {
+	    var _this = this;
+
 	    _classCallCheck(this, controller);
 
 	    var status = false;
@@ -36141,7 +36148,8 @@ var app =
 	    this.da = function (letter) {
 	        letter.status != letter.status;
 	    };
-
+	    this._mailJob = mailJob;
+	    console.log(this._mailJob);
 	    this.createFilter = function () {
 	        if (unread) {
 	            unread = false;
@@ -36157,6 +36165,11 @@ var app =
 	    this.filter = function (status) {
 	        return status = 'All' ? '' : status;
 	    };
+
+	    this.del = function (UID) {
+	        return _this._mailJob.RESTdelete(UID);
+	    };
+	    // console.log(...arguments)
 	}
 
 	// this.unreadCounter = this.mails.filter(x=>x.inBox == this.active);
@@ -36180,7 +36193,7 @@ var app =
 /* 26 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails\">\r\n                    <!-- <td>{{letter.id}}</td> -->\r\n                    <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter._id}}</a></td>\r\n                    <td>{{letter.created}}</td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails\">\r\n                    <!-- <td>{{letter.id}}</td> -->\r\n                    <td><button class=\"btn btn-primary\" ng-click=\"$ctrl.del(letter._id)\">del</button>\r\n                    <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter._id}}</a></td>\r\n                    <td>{{letter.created}}</td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
 /* 27 */
@@ -36217,7 +36230,7 @@ var app =
 
 			this._mailJob = mailJob;
 			console.log(this.params, this.mm);
-			this.params = $scope.mm;
+			// this.params = $scope.mm;
 			console.log(this.params, this.mm);
 		}
 
@@ -36247,7 +36260,7 @@ var app =
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.mm.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.mm.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.mm.textLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
+	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.textLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
 
 /***/ },
 /* 29 */

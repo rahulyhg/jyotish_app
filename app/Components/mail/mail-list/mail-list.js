@@ -4,13 +4,14 @@ import angular from 'angular';
 
 export class controller {
 
-    constructor(mailJob) {
+    constructor(mailJob, $stateParams) {
         let [status, unread] = [false, false];
 
         this.da = function(letter) {
             letter.status != letter.status;
         };
-
+        this._mailJob = mailJob;
+        console.log(this._mailJob)
         this.createFilter = function() {
             if (unread) {
                 unread = false;
@@ -22,6 +23,10 @@ export class controller {
         };
 
         this.filter = (status) => status = 'All' ? '' : status;
+
+        this.del = UID => this._mailJob.RESTdelete(UID)
+            // console.log(...arguments)
+        
     }
 
     // this.unreadCounter = this.mails.filter(x=>x.inBox == this.active);

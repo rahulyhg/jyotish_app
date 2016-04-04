@@ -25,6 +25,10 @@ class MailJob {
         return this._http.get('https://jyotish.gift/api/mail/show/')
     }
 
+    RESTdelete(UID) {
+        return this._http.delete('https://jyotish.gift/api/mail/del/'+UID)
+    }
+
     updResponse(query) {
         if(!query.length) return;
         let month = ['January', 'February', 'March', 'April',

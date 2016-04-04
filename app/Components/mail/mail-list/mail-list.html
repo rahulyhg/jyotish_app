@@ -10,6 +10,7 @@
             <tbody class="mail-box">
                 <tr ng-repeat="letter in $ctrl.mails">
                     <!-- <td>{{letter.id}}</td> -->
+                    <td><button class="btn btn-primary" ng-click="$ctrl.del(letter._id)">del</button>
                     <td><a ui-sref="letterOpen({id: letter._id})">{{letter._id}}</a></td>
                     <td>{{letter.created}}</td>
                     <td>{{letter.from}}</td>

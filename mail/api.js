@@ -7,9 +7,14 @@ exports.post = function*(next){
 	console.log(options);
 	let mail = yield Mail.create(options);
 	this.body = mail.toObject();
-}
+};
 
 exports.get = function*(next){
 	let mails = yield Mail.find({}).lean();
 	this.body = mails;
 };
+
+exports.delete = function*(next) {
+	let del = yield Mail.findOneAndRemove(this.request.id).exec();
+	this.body = del;
+}

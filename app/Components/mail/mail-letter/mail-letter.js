@@ -8,7 +8,7 @@ export class mailLetter {
 		
 		this._mailJob = mailJob;
 		console.log(this.params, this.mm)
-		this.params = $scope.mm;
+		// this.params = $scope.mm;
 		console.log(this.params, this.mm)		
 
 	}
