@@ -4,24 +4,20 @@ import mailJob from '../mail.service/mail.api';
 
 export class mailLetter {
 
-	constructor(mailJob,$scope) {
-		
-		this._mailJob = mailJob;
-		console.log(this.params, this.mm)
-		// this.params = $scope.mm;
-		console.log(this.params, this.mm)		
-
+	constructor(mailJob) {		
+		this._mailJob = mailJob;	
 	}
 
+	
 	send () {
-		console.log(this.params);
+		this._mailJob.RESTpost()
 	}
 
 };
 
 let mailComponent = {
 	bindings:{
-		params:'=ngModel'
+		params:'=?ngModel'
 	},
 	template: lettertmpl,
 	controller: mailLetter

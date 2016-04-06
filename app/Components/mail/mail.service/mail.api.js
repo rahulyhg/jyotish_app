@@ -6,6 +6,7 @@ class MailJob {
     
     constructor($http) {
         this._http = $http;
+        // this.url = 
     }
 
     RESTpost(params) {
@@ -27,6 +28,12 @@ class MailJob {
 
     RESTdelete(UID) {
         return this._http.delete('https://jyotish.gift/api/mail/del/'+UID)
+    }
+
+    updRequest(params, options) {
+        // params.
+
+        return params;
     }
 
     updResponse(query) {

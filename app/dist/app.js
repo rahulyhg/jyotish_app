@@ -35908,6 +35908,7 @@ var app =
 	        _classCallCheck(this, MailJob);
 
 	        this._http = $http;
+	        // this.url =
 	    }
 
 	    _createClass(MailJob, [{
@@ -35933,6 +35934,13 @@ var app =
 	        key: 'RESTdelete',
 	        value: function RESTdelete(UID) {
 	            return this._http.delete('https://jyotish.gift/api/mail/del/' + UID);
+	        }
+	    }, {
+	        key: 'updRequest',
+	        value: function updRequest(params, options) {
+	            // params.
+
+	            return params;
 	        }
 	    }, {
 	        key: 'updResponse',
@@ -36149,7 +36157,7 @@ var app =
 	        letter.status != letter.status;
 	    };
 	    this._mailJob = mailJob;
-	    console.log(this._mailJob);
+	    // console.log(this._mailJob)
 	    this.createFilter = function () {
 	        if (unread) {
 	            unread = false;
@@ -36226,19 +36234,16 @@ var app =
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var mailLetter = exports.mailLetter = function () {
-		function mailLetter(mailJob, $scope) {
+		function mailLetter(mailJob) {
 			_classCallCheck(this, mailLetter);
 
 			this._mailJob = mailJob;
-			console.log(this.params, this.mm);
-			// this.params = $scope.mm;
-			console.log(this.params, this.mm);
 		}
 
 		_createClass(mailLetter, [{
 			key: 'send',
 			value: function send() {
-				console.log(this.params);
+				this._mailJob.RESTpost();
 			}
 		}]);
 
@@ -36249,7 +36254,7 @@ var app =
 
 	var mailComponent = {
 		bindings: {
-			params: '=ngModel'
+			params: '=?ngModel'
 		},
 		template: _mailLetter2.default,
 		controller: mailLetter
@@ -36261,7 +36266,7 @@ var app =
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.textLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
+	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.params.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.params.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.params.textLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
 
 /***/ },
 /* 29 */

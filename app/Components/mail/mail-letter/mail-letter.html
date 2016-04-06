@@ -5,14 +5,14 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Send to: </label>
                 <h3><small class="text-danger">Test sending from <span class="lead">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>
-                <input type="email" class="form-control" placeholder="To" ng-model="$ctrl.to">
+                <input type="email" class="form-control" placeholder="To" ng-model="$ctrl.params.to">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Theme" ng-model="$ctrl.subject">
+                <input type="text" class="form-control" placeholder="Theme" ng-model="$ctrl.params.subject">
             </div>
             <div class="form-group">
                 <label>message:</label>
-                <textarea class="form-control" rows="3" placeholder="message text" ng-model="$ctrl.textLetter"></textarea>
+                <textarea class="form-control" rows="3" placeholder="message text" ng-model="$ctrl.params.textLetter"></textarea>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default pull-left" ng-click=$ctrl.send()>Send</button>

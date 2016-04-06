@@ -11,7 +11,7 @@ export class controller {
             letter.status != letter.status;
         };
         this._mailJob = mailJob;
-        console.log(this._mailJob)
+        // console.log(this._mailJob)
         this.createFilter = function() {
             if (unread) {
                 unread = false;
