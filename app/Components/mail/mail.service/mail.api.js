@@ -17,7 +17,7 @@ class MailJob {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             data: params
-        }
+        };
 
         return this._http(req)
     }
@@ -31,7 +31,8 @@ class MailJob {
     }
 
     updRequest(params, options) {
-        // params.
+       //To, Subject, textLetter
+        
 
         return params;
     }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const _ = require('lodash');
+//const _ = require('lodash');
 const config = require('config');
 
 var mailsSchema = new mongoose.Schema({
@@ -43,7 +43,7 @@ var mailsSchema = new mongoose.Schema({
     default: Date.now
   },
   unicode: {
-    type:String,
+    type:String
   },
   inBox: {
     type: String,

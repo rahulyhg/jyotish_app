@@ -35938,7 +35938,7 @@ var app =
 	    }, {
 	        key: 'updRequest',
 	        value: function updRequest(params, options) {
-	            // params.
+	            //To, Subject, textLetter
 
 	            return params;
 	        }
@@ -36229,28 +36229,31 @@ var app =
 
 	var _mail2 = _interopRequireDefault(_mail);
 
+	var _ObjectApi = __webpack_require__(33);
+
+	var _ObjectApi2 = _interopRequireDefault(_ObjectApi);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var mailLetter = exports.mailLetter = function () {
-		function mailLetter(mailJob) {
+		function mailLetter(mailJob, ApiGenerator) {
 			_classCallCheck(this, mailLetter);
 
 			this._mailJob = mailJob;
+			this._ApiGenerator = ApiGenerator;
 		}
 
 		_createClass(mailLetter, [{
 			key: 'send',
 			value: function send() {
-				this._mailJob.RESTpost();
+				this._mailJob.RESTpost(this._ApiGenerator(this.params));
 			}
 		}]);
 
 		return mailLetter;
 	}();
-
-	;
 
 	var mailComponent = {
 		bindings: {
@@ -36461,6 +36464,57 @@ var app =
 	}();
 
 	exports.default = _angular2.default.module('services.users', []).service('mailJob', UserService).name;
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	 * Created by Олег on 06.04.2016.
+	 */
+
+	var ApiGenerator = function () {
+	    function ApiGenerator(options) {
+	        _classCallCheck(this, ApiGenerator);
+
+	        this.nameSender = options.nameSender;
+	        this.from = options.from;
+	        this.to = options.to;
+	        this.Theme = options.Theme;
+	        this.unicode = options.unicode;
+	        this.inBox = options.inBox;
+	    }
+
+	    _createClass(ApiGenerator, null, [{
+	        key: 'generateDefaultLetter',
+	        value: function generateDefaultLetter(options) {
+	            // static options
+	            if (!options) options = {};
+
+	            options.nameSender = 'Guest';
+	            options.from = 'test@jyotish.gift';
+	            options.Theme = '!TEST! ';
+	            options.unicode = 'UTF-8';
+	            options.inBox = 'Sent';
+
+	            return new ApiGenerator(options);
+	        }
+	    }]);
+
+	    return ApiGenerator;
+	}();
+
+	exports.default = ApiGenerator;
 
 /***/ }
 /******/ ]);

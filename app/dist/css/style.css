@@ -70,4 +70,6 @@ body {
 
 .form-control {
     font-size: 35px!important;
+    height: auto!important;
+    padding: 1px 12px!important;
 }
