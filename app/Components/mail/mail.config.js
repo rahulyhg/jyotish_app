@@ -25,8 +25,7 @@ export default function routing($stateProvider, $urlRouterProvider) {
             controller: function(updateMails) {
 
                 this.mails = updateMails;
-                // $stateParams.mails = this.mails;
-                // console.log('privet', $stateParams,this.mails);
+
             }
         })
         .state('letterOpen', {
@@ -39,7 +38,3 @@ export default function routing($stateProvider, $urlRouterProvider) {
             controllerAs: '$ctrl'
         })
 }
-
-// var states = {
-
-// }

@@ -1,6 +1,7 @@
 const passport = require('koa-passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
+const co = require('co');
 
 
 passport.serializeUser(function(user, done) {
@@ -19,19 +20,45 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
   },
   function(email, password, done) {
-    User.findOne({ email: email }, function (err, user) {
-      if (err) {
-        return done(err);
-      }
+
+
+    co(function*() {
+
+      if(!email || !password) this.throw(404);
+
+      yield function(callback){
+        setTimeout(callback,100)
+      };
+
+      email = email.toLowerCase();
+
+    var user = yield User.findOne({ email: email }).exec();
 
       if (!user || !user.checkPassword(password)) {
-        // don't say whether the user exists
-        return done(null, false, { message: 'Нет такого пользователя или пароль неверен.' });
+        this.throw(404)
+      }  
+     // function (err, user) {
+     //  if (err) {
+     //    return done(err);
+     //  }
+
+     //  if (!user || !user.checkPassword(password)) {
+     //    // don't say whether the user exists
+     //    return done(null, false, { message: 'Нет такого пользователя или пароль неверен.' });
+     //  }
+     //  return done(null, user);
+    }).then(function(user){
+      done(null, user);
+    }, function(err) {
+      if(err) {
+        done(null, false, "Пользователь не найден")
+      } else {
+        done(err);
       }
-      return done(null, user);
+
     });
-  }
-));
+  })
+);
 
 var passportInitialize = passport.initialize();
 

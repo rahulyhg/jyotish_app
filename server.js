@@ -7,7 +7,7 @@
 
 
 if (process.env.TRACE) {
-  require('./libs/trace');
+    require('./libs/trace');
 }
 
 var koa = require('koa');
@@ -17,13 +17,13 @@ var config = require('config');
 var mongoose = require('./libs/mongoose');
 
 let port = config.connection.port;
-let ipaddress = config.connection.ipaddress; 
+let ipaddress = config.connection.ipaddress;
 
- // console.log(process.env)
+// console.log(process.env)
 
-if(process.env.NODE_ENV == 'production'){
-	port = '3000';
-	ipaddress = 'localhost';
+if (process.env.NODE_ENV == 'production') {
+    port = '3000';
+    ipaddress = 'localhost';
 };
 
 // keys for in-koa KeyGrip cookie signing (used in session, maybe other modules)
@@ -34,7 +34,7 @@ var fs = require('fs');
 var middlewares = fs.readdirSync(path.join(__dirname, 'middlewares')).sort();
 
 middlewares.forEach(function(middleware) {
-  app.use(require('./middlewares/' + middleware));
+    app.use(require('./middlewares/' + middleware));
 });
 
 // ---------------------------------------
@@ -43,8 +43,8 @@ middlewares.forEach(function(middleware) {
 var Router = require('koa-router');
 var router = new Router();
 
-let pages = ['/mail','/advice','/auth','/profile','/users', '/mail/letters'];  
-pages.forEach(page=>router.get(page+'/*',require('./routes/app').get))
+let pages = ['/mail', '/advice', '/auth', '/profile', '/users', '/mail/letters'];
+pages.forEach(page => router.get(page + '/*', require('./routes/app').get))
 
 // router.get('/', this.body = this.render('index'));
 router.get('/', require('./routes/frontpage').get);
@@ -60,17 +60,17 @@ const User = require('./models/user');
 const Mail = require('./models/mail');
 
 router.param('userById', function*(id, next) {
-        if (!mongooseose.Types.ObjectId.isValid(id)) {
-            this.throw(404);
-        }
+    if (!mongooseose.Types.ObjectId.isValid(id)) {
+        this.throw(404);
+    }
 
-        this.userById = yield User.findById(id);
+    this.userById = yield User.findById(id);
 
-        if (!this.userById) {
-            this.throw(404);
-        }
-        yield * next;
-    });
+    if (!this.userById) {
+        this.throw(404);
+    }
+    yield * next;
+});
 
 router.post('/auth/login/register/', require('./users/api').post);
 router.get('/auth/login/register/:userById', require('./users/api').getId);
@@ -85,7 +85,7 @@ app.use(router.routes());
 
 // var socket = require('./libs/socket');
 var server = app.listen(port, ipaddress, function() {
-            console.log('%s: Node server started on %s:%d ...',
-                        Date(Date.now() ), ipaddress, port);
-          });
+    console.log('%s: Node server started on %s:%d ...',
+        Date(Date.now()), ipaddress, port);
+});
 // socket(server);
