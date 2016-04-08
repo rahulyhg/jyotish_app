@@ -1,5 +1,3 @@
-// MailJob.$inject = ['$http'];
-
 import angular from 'angular';
 
 class MailJob {

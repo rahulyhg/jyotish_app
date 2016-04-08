@@ -1,5 +1,6 @@
 routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 import mailJob from './mail.service/mail.api';
+// import ApiGenerator from '../service/ObjectApi';
 
 export default function routing($stateProvider, $urlRouterProvider) {
 
@@ -32,9 +33,13 @@ export default function routing($stateProvider, $urlRouterProvider) {
             parent: 'mail',
             url: '/letters/:id',
             template: '<letter></letter>',
-            controller: function($stateParams) {
-                this.boxId = $stateParams.boxId;
-            },
-            controllerAs: '$ctrl'
+            // resolve: {
+            //     upd:function(ApiGenerator) {}
+            // },
+            // controller:function(upd){}
+            // controller: function($stateParams) {
+            //     // this.boxId = $stateParams.boxId;
+            // },
+            // controllerAs: '$ctrl'
         })
 }

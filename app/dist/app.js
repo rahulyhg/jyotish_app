@@ -65,7 +65,7 @@ var app =
 
 	var _mail2 = _interopRequireDefault(_mail);
 
-	var _users = __webpack_require__(29);
+	var _users = __webpack_require__(47);
 
 	var _users2 = _interopRequireDefault(_users);
 
@@ -35852,23 +35852,27 @@ var app =
 
 	var _mail2 = _interopRequireDefault(_mail);
 
-	var _mail3 = __webpack_require__(20);
+	var _mail3 = __webpack_require__(37);
 
 	var _mail4 = _interopRequireDefault(_mail3);
 
-	var _mailNav = __webpack_require__(21);
+	var _letter = __webpack_require__(38);
+
+	var _letter2 = _interopRequireDefault(_letter);
+
+	var _mailNav = __webpack_require__(39);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
-	var _mailGroups = __webpack_require__(23);
+	var _mailGroups = __webpack_require__(41);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
-	var _mailList = __webpack_require__(25);
+	var _mailList = __webpack_require__(43);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
 
-	var _mailLetter = __webpack_require__(27);
+	var _mailLetter = __webpack_require__(45);
 
 	var _mailLetter2 = _interopRequireDefault(_mailLetter);
 
@@ -35876,7 +35880,7 @@ var app =
 
 	// console.dir(angular.module('mail.home', [uirouter, mailLists]));
 
-	exports.default = _angular2.default.module('mail.home', [_angularUiRouter2.default, _mail2.default, _mailList2.default, _mailLetter2.default]).config(_mail4.default)
+	exports.default = _angular2.default.module('mail.home', [_angularUiRouter2.default, _mail2.default, _letter2.default, _mailList2.default, _mailLetter2.default]).config(_mail4.default)
 	// .service('mailJob',mailJob)
 	// .component('mail', mailNav)	
 	.component('navSection', (0, _mailNav2.default)()).component('mailGroups', (0, _mailGroups2.default)())
@@ -35893,7 +35897,17 @@ var app =
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // MailJob.$inject = ['$http'];
+	var _keys = __webpack_require__(20);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _classCallCheck2 = __webpack_require__(32);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(33);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
 
 	var _angular = __webpack_require__(1);
 
@@ -35901,17 +35915,15 @@ var app =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 	var MailJob = function () {
 	    function MailJob($http) {
-	        _classCallCheck(this, MailJob);
+	        (0, _classCallCheck3.default)(this, MailJob);
 
 	        this._http = $http;
 	        // this.url =
 	    }
 
-	    _createClass(MailJob, [{
+	    (0, _createClass3.default)(MailJob, [{
 	        key: 'RESTpost',
 	        value: function RESTpost(params) {
 	            var req = {
@@ -35949,7 +35961,7 @@ var app =
 	            var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 	            return query.map(function (x) {
-	                return Object.keys(x).reduce(function (a, b) {
+	                return (0, _keys2.default)(x).reduce(function (a, b) {
 
 	                    if (b == 'textLetter' && b.length) {
 	                        a[b] = x[b].slice(0, 5) + '...';
@@ -35963,7 +35975,6 @@ var app =
 	            });
 	        }
 	    }]);
-
 	    return MailJob;
 	}();
 
@@ -35971,6 +35982,259 @@ var app =
 
 /***/ },
 /* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(21), __esModule: true };
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(22);
+	module.exports = __webpack_require__(28).Object.keys;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.2.14 Object.keys(O)
+	var toObject = __webpack_require__(23);
+
+	__webpack_require__(25)('keys', function($keys){
+	  return function keys(it){
+	    return $keys(toObject(it));
+	  };
+	});
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.13 ToObject(argument)
+	var defined = __webpack_require__(24);
+	module.exports = function(it){
+	  return Object(defined(it));
+	};
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	// 7.2.1 RequireObjectCoercible(argument)
+	module.exports = function(it){
+	  if(it == undefined)throw TypeError("Can't call method on  " + it);
+	  return it;
+	};
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// most Object methods by ES6 should accept primitives
+	var $export = __webpack_require__(26)
+	  , core    = __webpack_require__(28)
+	  , fails   = __webpack_require__(31);
+	module.exports = function(KEY, exec){
+	  var fn  = (core.Object || {})[KEY] || Object[KEY]
+	    , exp = {};
+	  exp[KEY] = exec(fn);
+	  $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
+	};
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var global    = __webpack_require__(27)
+	  , core      = __webpack_require__(28)
+	  , ctx       = __webpack_require__(29)
+	  , PROTOTYPE = 'prototype';
+
+	var $export = function(type, name, source){
+	  var IS_FORCED = type & $export.F
+	    , IS_GLOBAL = type & $export.G
+	    , IS_STATIC = type & $export.S
+	    , IS_PROTO  = type & $export.P
+	    , IS_BIND   = type & $export.B
+	    , IS_WRAP   = type & $export.W
+	    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
+	    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
+	    , key, own, out;
+	  if(IS_GLOBAL)source = name;
+	  for(key in source){
+	    // contains in native
+	    own = !IS_FORCED && target && key in target;
+	    if(own && key in exports)continue;
+	    // export native or passed
+	    out = own ? target[key] : source[key];
+	    // prevent global pollution for namespaces
+	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+	    // bind timers to global for call from export context
+	    : IS_BIND && own ? ctx(out, global)
+	    // wrap global constructors for prevent change them in library
+	    : IS_WRAP && target[key] == out ? (function(C){
+	      var F = function(param){
+	        return this instanceof C ? new C(param) : C(param);
+	      };
+	      F[PROTOTYPE] = C[PROTOTYPE];
+	      return F;
+	    // make static versions for prototype methods
+	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+	    if(IS_PROTO)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
+	  }
+	};
+	// type bitmap
+	$export.F = 1;  // forced
+	$export.G = 2;  // global
+	$export.S = 4;  // static
+	$export.P = 8;  // proto
+	$export.B = 16; // bind
+	$export.W = 32; // wrap
+	module.exports = $export;
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+	var global = module.exports = typeof window != 'undefined' && window.Math == Math
+	  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '1.2.6'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// optional / simple context binding
+	var aFunction = __webpack_require__(30);
+	module.exports = function(fn, that, length){
+	  aFunction(fn);
+	  if(that === undefined)return fn;
+	  switch(length){
+	    case 1: return function(a){
+	      return fn.call(that, a);
+	    };
+	    case 2: return function(a, b){
+	      return fn.call(that, a, b);
+	    };
+	    case 3: return function(a, b, c){
+	      return fn.call(that, a, b, c);
+	    };
+	  }
+	  return function(/* ...args */){
+	    return fn.apply(that, arguments);
+	  };
+	};
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	module.exports = function(it){
+	  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+	  return it;
+	};
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	module.exports = function(exec){
+	  try {
+	    return !!exec();
+	  } catch(e){
+	    return true;
+	  }
+	};
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+
+	exports.default = function (instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	};
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	exports.__esModule = true;
+
+	var _defineProperty = __webpack_require__(34);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];
+	      descriptor.enumerable = descriptor.enumerable || false;
+	      descriptor.configurable = true;
+	      if ("value" in descriptor) descriptor.writable = true;
+	      (0, _defineProperty2.default)(target, descriptor.key, descriptor);
+	    }
+	  }
+
+	  return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+	    if (staticProps) defineProperties(Constructor, staticProps);
+	    return Constructor;
+	  };
+	}();
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(35), __esModule: true };
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $ = __webpack_require__(36);
+	module.exports = function defineProperty(it, key, desc){
+	  return $.setDesc(it, key, desc);
+	};
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	var $Object = Object;
+	module.exports = {
+	  create:     $Object.create,
+	  getProto:   $Object.getPrototypeOf,
+	  isEnum:     {}.propertyIsEnumerable,
+	  getDesc:    $Object.getOwnPropertyDescriptor,
+	  setDesc:    $Object.defineProperty,
+	  setDescs:   $Object.defineProperties,
+	  getKeys:    $Object.keys,
+	  getNames:   $Object.getOwnPropertyNames,
+	  getSymbols: $Object.getOwnPropertySymbols,
+	  each:       [].forEach
+	};
+
+/***/ },
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35987,6 +36251,9 @@ var app =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	routing.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+	// import ApiGenerator from '../service/ObjectApi';
+
 	function routing($stateProvider, $urlRouterProvider) {
 
 	    // $urlRouterProvider.otherwise('/letters');
@@ -36009,26 +36276,65 @@ var app =
 	        controller: function controller(updateMails) {
 
 	            this.mails = updateMails;
-	            // $stateParams.mails = this.mails;
-	            // console.log('privet', $stateParams,this.mails);
 	        }
 	    }).state('letterOpen', {
 	        parent: 'mail',
 	        url: '/letters/:id',
-	        template: '<letter></letter>',
-	        controller: function controller($stateParams) {
-	            this.boxId = $stateParams.boxId;
-	        },
-	        controllerAs: '$ctrl'
+	        template: '<letter></letter>'
 	    });
 	}
 
-	// var states = {
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
 
-	// }
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _classCallCheck2 = __webpack_require__(32);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(33);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var LetterConstructor = function () {
+	    function LetterConstructor() {
+	        (0, _classCallCheck3.default)(this, LetterConstructor);
+	    }
+
+	    (0, _createClass3.default)(LetterConstructor, [{
+	        key: 'generate',
+	        value: function generate(options) {
+	            // static options
+	            if (!options) options = {};
+
+	            options.nameSender = 'Guest';
+	            options.from = 'test@jyotish.gift';
+	            options.Theme = '!TEST! ';
+	            options.unicode = 'UTF-8';
+	            options.inBox = 'Sent';
+
+	            return options;
+	        }
+	    }]);
+	    return LetterConstructor;
+	}(); // MailJob.$inject = ['$http'];
+
+	exports.default = _angular2.default.module('services.letter-consturctor', []).service('letterConsturctor', LetterConstructor).name;
 
 /***/ },
-/* 21 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36038,7 +36344,7 @@ var app =
 	});
 	exports.default = mailNav;
 
-	var _mailNav = __webpack_require__(22);
+	var _mailNav = __webpack_require__(40);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
@@ -36061,13 +36367,13 @@ var app =
 	}
 
 /***/ },
-/* 22 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = "<!-- <div class=\"navbar navbar-default navbar-fixed-left left-section\"> -->\r\n    <p>\r\n        <a ui-sref=\"letterOpen\"class=\"btn btn-primary center-block compose btn-lg\">COMPOSE</a>\r\n    </p>\r\n    <a class=\"title\" href=\"#\"> E-MAIL Angular - {{$ctrl.readMessages}}</a>\r\n<!-- </div> -->\r\n    <mail-groups></mail-groups>\r\n</ul>\r\n";
 
 /***/ },
-/* 23 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36077,7 +36383,7 @@ var app =
 	});
 	exports.default = navbars;
 
-	var _mailGroups = __webpack_require__(24);
+	var _mailGroups = __webpack_require__(42);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
@@ -36112,13 +36418,13 @@ var app =
 	}
 
 /***/ },
-/* 24 */
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"nav\">\r\n    <li ng-repeat=\"each in $ctrl.navbarsList\">\r\n        <a ui-sref-active=\"active\">{{each}}</a>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ },
-/* 25 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36128,7 +36434,11 @@ var app =
 	});
 	exports.controller = undefined;
 
-	var _mailList = __webpack_require__(26);
+	var _classCallCheck2 = __webpack_require__(32);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _mailList = __webpack_require__(44);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
 
@@ -36142,13 +36452,10 @@ var app =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 	var controller = exports.controller = function controller(mailJob, $state) {
 	    var _this = this;
 
-	    _classCallCheck(this, controller);
-
+	    (0, _classCallCheck3.default)(this, controller);
 	    var status = false;
 	    var unread = false;
 
@@ -36199,13 +36506,13 @@ var app =
 	exports.default = _angular2.default.module('component.mail', []).component('mailList', MailList).name;
 
 /***/ },
-/* 26 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails\">\r\n                    <!-- <td>{{letter.id}}</td> -->\r\n                    <td><button class=\"btn btn-primary\" ng-click=\"$ctrl.del(letter._id)\">del</button>\r\n                    <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter._id}}</a></td>\r\n                    <td>{{letter.created}}</td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
-/* 27 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36215,43 +36522,43 @@ var app =
 	});
 	exports.mailLetter = undefined;
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _classCallCheck2 = __webpack_require__(32);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(33);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
 
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _mailLetter = __webpack_require__(28);
+	var _mailLetter = __webpack_require__(46);
 
 	var _mailLetter2 = _interopRequireDefault(_mailLetter);
 
-	var _mail = __webpack_require__(19);
-
-	var _mail2 = _interopRequireDefault(_mail);
-
-	var _ObjectApi = __webpack_require__(33);
-
-	var _ObjectApi2 = _interopRequireDefault(_ObjectApi);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	// console.log(ApiGenerator, mailJob);
 
 	var mailLetter = exports.mailLetter = function () {
-		function mailLetter(mailJob, ApiGenerator) {
-			_classCallCheck(this, mailLetter);
+		function mailLetter(mailJob, letterConsturctor) {
+			(0, _classCallCheck3.default)(this, mailLetter);
 
 			this._mailJob = mailJob;
-			this._ApiGenerator = ApiGenerator;
+			this._letterConstructor = letterConsturctor;
+			//
+			// this._ApiGenerator = ApiGenerator;
 		}
 
-		_createClass(mailLetter, [{
+		(0, _createClass3.default)(mailLetter, [{
 			key: 'send',
 			value: function send() {
-				this._mailJob.RESTpost(this._ApiGenerator(this.params));
+				console.dir(this._letterConstructor.generate);
+				this._mailJob.RESTpost(this._letterConstructor.generate(this.params));
 			}
 		}]);
-
 		return mailLetter;
 	}();
 
@@ -36266,13 +36573,13 @@ var app =
 	exports.default = _angular2.default.module('component.letter', []).component('letter', mailComponent).name;
 
 /***/ },
-/* 28 */
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.params.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.params.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.params.textLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
 
 /***/ },
-/* 29 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36289,15 +36596,15 @@ var app =
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _usersList = __webpack_require__(30);
+	var _usersList = __webpack_require__(48);
 
 	var _usersList2 = _interopRequireDefault(_usersList);
 
-	var _users = __webpack_require__(31);
+	var _users = __webpack_require__(49);
 
 	var _users2 = _interopRequireDefault(_users);
 
-	var _user = __webpack_require__(32);
+	var _user = __webpack_require__(50);
 
 	var _user2 = _interopRequireDefault(_user);
 
@@ -36306,7 +36613,7 @@ var app =
 	exports.default = _angular2.default.module('module.users', [_angularUiRouter2.default, _usersList2.default]).config(_users2.default).name;
 
 /***/ },
-/* 30 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36315,6 +36622,10 @@ var app =
 		value: true
 	});
 	exports.controller = undefined;
+
+	var _classCallCheck2 = __webpack_require__(32);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
 	var _angular = __webpack_require__(1);
 
@@ -36326,10 +36637,8 @@ var app =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 	var controller = exports.controller = function controller() {
-		_classCallCheck(this, controller);
+		(0, _classCallCheck3.default)(this, controller);
 	};
 
 	var userComponent = {
@@ -36343,7 +36652,7 @@ var app =
 	exports.default = _angular2.default.module('component.user-list', []).component('userList', userComponent).name;
 
 /***/ },
-/* 31 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36353,7 +36662,7 @@ var app =
 	});
 	exports.default = routing;
 
-	var _user = __webpack_require__(32);
+	var _user = __webpack_require__(50);
 
 	var _user2 = _interopRequireDefault(_user);
 
@@ -36401,7 +36710,7 @@ var app =
 	// }
 
 /***/ },
-/* 32 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36410,7 +36719,13 @@ var app =
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // MailJob.$inject = ['$http'];
+	var _classCallCheck2 = __webpack_require__(32);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(33);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
 
 	var _angular = __webpack_require__(1);
 
@@ -36418,16 +36733,14 @@ var app =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 	var UserService = function () {
 	  function UserService($http) {
-	    _classCallCheck(this, UserService);
+	    (0, _classCallCheck3.default)(this, UserService);
 
 	    this._http = $http;
 	  }
 
-	  _createClass(UserService, [{
+	  (0, _createClass3.default)(UserService, [{
 	    key: 'RESTpost',
 	    value: function RESTpost() {}
 	  }, {
@@ -36459,62 +36772,11 @@ var app =
 	      //     )
 	    }
 	  }]);
-
 	  return UserService;
-	}();
+	}(); // MailJob.$inject = ['$http'];
 
 	exports.default = _angular2.default.module('services.users', []).service('mailJob', UserService).name;
 
-/***/ },
-/* 33 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	/**
-	 * Created by Олег on 06.04.2016.
-	 */
-
-	var ApiGenerator = function () {
-	    function ApiGenerator(options) {
-	        _classCallCheck(this, ApiGenerator);
-
-	        this.nameSender = options.nameSender;
-	        this.from = options.from;
-	        this.to = options.to;
-	        this.Theme = options.Theme;
-	        this.unicode = options.unicode;
-	        this.inBox = options.inBox;
-	    }
-
-	    _createClass(ApiGenerator, null, [{
-	        key: 'generateDefaultLetter',
-	        value: function generateDefaultLetter(options) {
-	            // static options
-	            if (!options) options = {};
-
-	            options.nameSender = 'Guest';
-	            options.from = 'test@jyotish.gift';
-	            options.Theme = '!TEST! ';
-	            options.unicode = 'UTF-8';
-	            options.inBox = 'Sent';
-
-	            return new ApiGenerator(options);
-	        }
-	    }]);
-
-	    return ApiGenerator;
-	}();
-
-	exports.default = ApiGenerator;
-
 /***/ }
 /******/ ]);
+//# sourceMappingURL=app.js.map

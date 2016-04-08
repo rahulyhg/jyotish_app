@@ -1,19 +1,21 @@
 import angular from 'angular';
 import lettertmpl from './mail-letter.html';
-import mailJob from '../mail.service/mail.api';
-import ApiGenerator from '../../service/ObjectApi';
+
+// console.log(ApiGenerator, mailJob);
 
 export class mailLetter {
 
-	constructor(mailJob,ApiGenerator) {
+	 constructor(mailJob, letterConsturctor) {
 		this._mailJob = mailJob;
-		this._ApiGenerator = ApiGenerator;
+		this._letterConstructor = letterConsturctor;
+		// 
+		// this._ApiGenerator = ApiGenerator;
 	}
 
 	send () {
-		this._mailJob.RESTpost(this._ApiGenerator(this.params));
+		console.dir(this._letterConstructor.generate);
+		this._mailJob.RESTpost(this._letterConstructor.generate(this.params));
 	}
-
 }
 
 let mailComponent = {

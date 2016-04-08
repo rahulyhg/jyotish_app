@@ -30,7 +30,7 @@ module.exports = {
         aggregateTimeout: 300
     },
 
-    devtool: NODE_ENV == 'production' ? "cheap-module-source-map" : null,
+    devtool: NODE_ENV != 'production' ? "source-map" : null,
 
     plugins: [
         new webpack.NoErrorsPlugin(),
@@ -70,17 +70,19 @@ module.exports = {
 
     module: {
         loaders: [{
-                test: /\.js$/,
-                // include: appFolder,
-                exclude: /node_modules/,
-                loader: 'babel?presets[]=es2015,plugins[]=transform-es2015-modules-commonjs'
-
+            test: /\.js$/,            
+            exclude: /node_modules/,
+            loader: 'babel',
+            query: {
+                plugins: ['transform-runtime'],
+                presets: ['es2015', 'stage-0']
             },
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.html$/, loader: 'html' },
-            { test: /\.(woff|woff2|ttf|svg|eot)$/, loader: 'url' }
-        ]
-    }
+        },
+        { test: /\.css$/, loader: 'style-loader!css-loader' },
+        { test: /\.html$/, loader: 'html' },
+        { test: /\.(woff|woff2|ttf|svg|eot)$/, loader: 'url' }
+    ]
+}
 }
 
 // console.log(new Date.now())
