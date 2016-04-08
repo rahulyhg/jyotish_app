@@ -8,16 +8,17 @@ class MailJob {
     }
 
     RESTpost(params) {
+        console.log(params)
         let req = {
             method: 'POST',
             url: 'https://jyotish.gift/api/mail/create/',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: params
+            data: JSON.stringify(params)
         };
 
-        return this._http(req)
+        return this._http.post(req.url,req.data)
     }
 
     RESTget() {

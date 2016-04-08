@@ -15,8 +15,7 @@ class LetterConstructor {
         options.Theme = '!TEST! ';
         options.unicode = 'UTF-8';
         options.inBox = 'Sent';
-       
-        return options;
+        return options;       
     }
 
 }

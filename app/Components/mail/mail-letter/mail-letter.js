@@ -13,7 +13,7 @@ export class mailLetter {
 	}
 
 	send () {
-		console.dir(this._letterConstructor.generate);
+		console.dir(this._letterConstructor.generate(this.params));
 		this._mailJob.RESTpost(this._letterConstructor.generate(this.params));
 	}
 }

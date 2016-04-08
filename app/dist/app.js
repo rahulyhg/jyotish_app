@@ -35901,6 +35901,10 @@ var app =
 
 	var _keys2 = _interopRequireDefault(_keys);
 
+	var _stringify = __webpack_require__(51);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
 	var _classCallCheck2 = __webpack_require__(32);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -35926,16 +35930,17 @@ var app =
 	    (0, _createClass3.default)(MailJob, [{
 	        key: 'RESTpost',
 	        value: function RESTpost(params) {
+	            console.log(params);
 	            var req = {
 	                method: 'POST',
 	                url: 'https://jyotish.gift/api/mail/create/',
 	                headers: {
 	                    'Content-Type': 'application/x-www-form-urlencoded'
 	                },
-	                data: params
+	                data: (0, _stringify2.default)(params)
 	            };
 
-	            return this._http(req);
+	            return this._http.post(req.url, req.data);
 	        }
 	    }, {
 	        key: 'RESTget',
@@ -36324,7 +36329,6 @@ var app =
 	            options.Theme = '!TEST! ';
 	            options.unicode = 'UTF-8';
 	            options.inBox = 'Sent';
-
 	            return options;
 	        }
 	    }]);
@@ -36509,7 +36513,7 @@ var app =
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails\">\r\n                    <!-- <td>{{letter.id}}</td> -->\r\n                    <td><button class=\"btn btn-primary\" ng-click=\"$ctrl.del(letter._id)\">del</button>\r\n                    <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter._id}}</a></td>\r\n                    <td>{{letter.created}}</td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
+	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails\">\r\n                    <!-- <td>{{letter.id}}</td> -->\r\n                    <td><button class=\"btn btn-primary\" ng-click=\"$ctrl.del(letter._id)\">del</button>\r\n                    <!-- <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter._id}}</a></td> -->\r\n                    <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter.created}}</a></td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
 /* 45 */
@@ -36555,7 +36559,7 @@ var app =
 		(0, _createClass3.default)(mailLetter, [{
 			key: 'send',
 			value: function send() {
-				console.dir(this._letterConstructor.generate);
+				console.dir(this._letterConstructor.generate(this.params));
 				this._mailJob.RESTpost(this._letterConstructor.generate(this.params));
 			}
 		}]);
@@ -36776,6 +36780,21 @@ var app =
 	}(); // MailJob.$inject = ['$http'];
 
 	exports.default = _angular2.default.module('services.users', []).service('mailJob', UserService).name;
+
+/***/ },
+/* 51 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(52), __esModule: true };
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core = __webpack_require__(28);
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
+	};
 
 /***/ }
 /******/ ]);
