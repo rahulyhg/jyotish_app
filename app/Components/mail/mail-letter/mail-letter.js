@@ -12,8 +12,7 @@ export class mailLetter {
 		// this._ApiGenerator = ApiGenerator;
 	}
 
-	send () {
-		console.dir(this._letterConstructor.generate(this.params));
+	send () {		
 		this._mailJob.RESTpost(this._letterConstructor.generate(this.params));
 	}
 }

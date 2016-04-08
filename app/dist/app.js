@@ -65,7 +65,7 @@ var app =
 
 	var _mail2 = _interopRequireDefault(_mail);
 
-	var _users = __webpack_require__(47);
+	var _users = __webpack_require__(49);
 
 	var _users2 = _interopRequireDefault(_users);
 
@@ -35852,27 +35852,27 @@ var app =
 
 	var _mail2 = _interopRequireDefault(_mail);
 
-	var _mail3 = __webpack_require__(37);
+	var _mail3 = __webpack_require__(39);
 
 	var _mail4 = _interopRequireDefault(_mail3);
 
-	var _letter = __webpack_require__(38);
+	var _letter = __webpack_require__(40);
 
 	var _letter2 = _interopRequireDefault(_letter);
 
-	var _mailNav = __webpack_require__(39);
+	var _mailNav = __webpack_require__(41);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
-	var _mailGroups = __webpack_require__(41);
+	var _mailGroups = __webpack_require__(43);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
-	var _mailList = __webpack_require__(43);
+	var _mailList = __webpack_require__(45);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
 
-	var _mailLetter = __webpack_require__(45);
+	var _mailLetter = __webpack_require__(47);
 
 	var _mailLetter2 = _interopRequireDefault(_mailLetter);
 
@@ -35901,15 +35901,15 @@ var app =
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _stringify = __webpack_require__(51);
+	var _stringify = __webpack_require__(32);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
-	var _classCallCheck2 = __webpack_require__(32);
+	var _classCallCheck2 = __webpack_require__(34);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _createClass2 = __webpack_require__(33);
+	var _createClass2 = __webpack_require__(35);
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
@@ -35930,7 +35930,6 @@ var app =
 	    (0, _createClass3.default)(MailJob, [{
 	        key: 'RESTpost',
 	        value: function RESTpost(params) {
-	            console.log(params);
 	            var req = {
 	                method: 'POST',
 	                url: 'https://jyotish.gift/api/mail/create/',
@@ -36161,6 +36160,21 @@ var app =
 
 /***/ },
 /* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(33), __esModule: true };
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core = __webpack_require__(28);
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
+	};
+
+/***/ },
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36174,14 +36188,14 @@ var app =
 	};
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _defineProperty = __webpack_require__(34);
+	var _defineProperty = __webpack_require__(36);
 
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -36206,22 +36220,22 @@ var app =
 	}();
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(35), __esModule: true };
+	module.exports = { "default": __webpack_require__(37), __esModule: true };
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $ = __webpack_require__(36);
+	var $ = __webpack_require__(38);
 	module.exports = function defineProperty(it, key, desc){
 	  return $.setDesc(it, key, desc);
 	};
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports) {
 
 	var $Object = Object;
@@ -36239,7 +36253,7 @@ var app =
 	};
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36290,7 +36304,7 @@ var app =
 	}
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36299,11 +36313,11 @@ var app =
 	    value: true
 	});
 
-	var _classCallCheck2 = __webpack_require__(32);
+	var _classCallCheck2 = __webpack_require__(34);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _createClass2 = __webpack_require__(33);
+	var _createClass2 = __webpack_require__(35);
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
@@ -36338,7 +36352,7 @@ var app =
 	exports.default = _angular2.default.module('services.letter-consturctor', []).service('letterConsturctor', LetterConstructor).name;
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36348,7 +36362,7 @@ var app =
 	});
 	exports.default = mailNav;
 
-	var _mailNav = __webpack_require__(40);
+	var _mailNav = __webpack_require__(42);
 
 	var _mailNav2 = _interopRequireDefault(_mailNav);
 
@@ -36371,13 +36385,13 @@ var app =
 	}
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = "<!-- <div class=\"navbar navbar-default navbar-fixed-left left-section\"> -->\r\n    <p>\r\n        <a ui-sref=\"letterOpen\"class=\"btn btn-primary center-block compose btn-lg\">COMPOSE</a>\r\n    </p>\r\n    <a class=\"title\" href=\"#\"> E-MAIL Angular - {{$ctrl.readMessages}}</a>\r\n<!-- </div> -->\r\n    <mail-groups></mail-groups>\r\n</ul>\r\n";
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36387,7 +36401,7 @@ var app =
 	});
 	exports.default = navbars;
 
-	var _mailGroups = __webpack_require__(42);
+	var _mailGroups = __webpack_require__(44);
 
 	var _mailGroups2 = _interopRequireDefault(_mailGroups);
 
@@ -36422,13 +36436,13 @@ var app =
 	}
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"nav\">\r\n    <li ng-repeat=\"each in $ctrl.navbarsList\">\r\n        <a ui-sref-active=\"active\">{{each}}</a>\r\n    </li>\r\n</ul>\r\n";
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36438,11 +36452,11 @@ var app =
 	});
 	exports.controller = undefined;
 
-	var _classCallCheck2 = __webpack_require__(32);
+	var _classCallCheck2 = __webpack_require__(34);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _mailList = __webpack_require__(44);
+	var _mailList = __webpack_require__(46);
 
 	var _mailList2 = _interopRequireDefault(_mailList);
 
@@ -36510,13 +36524,13 @@ var app =
 	exports.default = _angular2.default.module('component.mail', []).component('mailList', MailList).name;
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"panel panel-info\">\r\n    <div class=\"panel-heading\">\r\n        <button class=\"btn btn-danger \">{{$ctrl.active}}</button>\r\n        <button class=\"btn btn-warning\" ng-click=$ctrl.createFilter()>Unread</button>\r\n        <h3 class=\"panel-title pull-right\">{{$ctrl.unreadCounter}}</h3>\r\n        <input type=\"text\" ng-model=\"senderName.Theme\" placeholder=\"find\" />\r\n    </div>\r\n    <div class=\"panel-body\">\r\n        <table class=\"table table-default\">\r\n            <tbody class=\"mail-box\">\r\n                <tr ng-repeat=\"letter in $ctrl.mails\">\r\n                    <!-- <td>{{letter.id}}</td> -->\r\n                    <td><button class=\"btn btn-primary\" ng-click=\"$ctrl.del(letter._id)\">del</button>\r\n                    <!-- <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter._id}}</a></td> -->\r\n                    <td><a ui-sref=\"letterOpen({id: letter._id})\">{{letter.created}}</a></td>\r\n                    <td>{{letter.from}}</td>\r\n                    <td>{{letter.Theme}}</td>\r\n                    <td>{{letter.nameSender}}</td>\r\n                    <td>{{letter.textLetter}}</td>\r\n                    <td>\r\n                        <input type=\"checkbox\" ng-model=letter.status ng-click=da(letter)>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36526,11 +36540,11 @@ var app =
 	});
 	exports.mailLetter = undefined;
 
-	var _classCallCheck2 = __webpack_require__(32);
+	var _classCallCheck2 = __webpack_require__(34);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _createClass2 = __webpack_require__(33);
+	var _createClass2 = __webpack_require__(35);
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
@@ -36538,7 +36552,7 @@ var app =
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _mailLetter = __webpack_require__(46);
+	var _mailLetter = __webpack_require__(48);
 
 	var _mailLetter2 = _interopRequireDefault(_mailLetter);
 
@@ -36559,7 +36573,6 @@ var app =
 		(0, _createClass3.default)(mailLetter, [{
 			key: 'send',
 			value: function send() {
-				console.dir(this._letterConstructor.generate(this.params));
 				this._mailJob.RESTpost(this._letterConstructor.generate(this.params));
 			}
 		}]);
@@ -36577,13 +36590,13 @@ var app =
 	exports.default = _angular2.default.module('component.letter', []).component('letter', mailComponent).name;
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports) {
 
 	module.exports = "<form class=\"form\" ng-submit=\"\">\r\n\r\n    <div class=\"bs-example\" data-example-id=\"textarea-form-control\">\r\n        <div class=\"bs-callout bs-callout-danger\">\r\n            <div class=\"form-group\">\r\n                <label for=\"exampleInputEmail1\">Send to: </label>\r\n                <h3><small class=\"text-danger\">Test sending from <span class=\"lead\">Oleg Lustenko -> test@jyotish.gift</span> </small></h3>\r\n                <input type=\"email\" class=\"form-control\" placeholder=\"To\" ng-model=\"$ctrl.params.to\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Theme\" ng-model=\"$ctrl.params.subject\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label>message:</label>\r\n                <textarea class=\"form-control\" rows=\"3\" placeholder=\"message text\" ng-model=\"$ctrl.params.textLetter\"></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default pull-left\" ng-click=$ctrl.send()>Send</button>\r\n                <a ui-sref=\"letters\" class=\"btn btn-primary pull-right\">Cancel</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>";
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36600,15 +36613,15 @@ var app =
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _usersList = __webpack_require__(48);
+	var _usersList = __webpack_require__(50);
 
 	var _usersList2 = _interopRequireDefault(_usersList);
 
-	var _users = __webpack_require__(49);
+	var _users = __webpack_require__(51);
 
 	var _users2 = _interopRequireDefault(_users);
 
-	var _user = __webpack_require__(50);
+	var _user = __webpack_require__(52);
 
 	var _user2 = _interopRequireDefault(_user);
 
@@ -36617,7 +36630,7 @@ var app =
 	exports.default = _angular2.default.module('module.users', [_angularUiRouter2.default, _usersList2.default]).config(_users2.default).name;
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36627,7 +36640,7 @@ var app =
 	});
 	exports.controller = undefined;
 
-	var _classCallCheck2 = __webpack_require__(32);
+	var _classCallCheck2 = __webpack_require__(34);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -36656,7 +36669,7 @@ var app =
 	exports.default = _angular2.default.module('component.user-list', []).component('userList', userComponent).name;
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36666,7 +36679,7 @@ var app =
 	});
 	exports.default = routing;
 
-	var _user = __webpack_require__(50);
+	var _user = __webpack_require__(52);
 
 	var _user2 = _interopRequireDefault(_user);
 
@@ -36714,7 +36727,7 @@ var app =
 	// }
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36723,11 +36736,11 @@ var app =
 	  value: true
 	});
 
-	var _classCallCheck2 = __webpack_require__(32);
+	var _classCallCheck2 = __webpack_require__(34);
 
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-	var _createClass2 = __webpack_require__(33);
+	var _createClass2 = __webpack_require__(35);
 
 	var _createClass3 = _interopRequireDefault(_createClass2);
 
@@ -36781,21 +36794,5 @@ var app =
 
 	exports.default = _angular2.default.module('services.users', []).service('mailJob', UserService).name;
 
-/***/ },
-/* 51 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(52), __esModule: true };
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var core = __webpack_require__(28);
-	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
-	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
-	};
-
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map

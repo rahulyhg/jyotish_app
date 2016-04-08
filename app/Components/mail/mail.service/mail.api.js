@@ -7,8 +7,7 @@ class MailJob {
         // this.url = 
     }
 
-    RESTpost(params) {
-        console.log(params)
+    RESTpost(params) {      
         let req = {
             method: 'POST',
             url: 'https://jyotish.gift/api/mail/create/',

@@ -30,7 +30,7 @@ module.exports = {
         aggregateTimeout: 300
     },
 
-    devtool: NODE_ENV != 'production' ? "source-map" : null,
+    devtool: NODE_ENV == 'production' ? "source-map" : null,
 
     plugins: [
         new webpack.NoErrorsPlugin(),
