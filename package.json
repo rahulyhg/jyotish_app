@@ -4,8 +4,7 @@
   "description": "Oleg Lustenko develop edition",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "ss": "set NODE_ENV=production&&node server.js"
+    "start": "gulp nodemon"
   },
   "author": "Oleg Lustenko",
   "license": "ISC",
@@ -68,8 +67,12 @@
     "passport-facebook": "^2.1.0",
     "passport-local": "^1.0.0",
     "passport-vkontakte": "^0.4.0",
+    "redis": "^2.5.3",
     "request-promise": "^2.0.0",
     "run-sequence": "^1.1.5",
+    "socket.io": "^1.4.5",
+    "socket.io-emitter": "^1.0.0",
+    "socket.io-redis": "^1.0.0",
     "style-loader": "^0.13.1",
     "thunkify": "^2.1.2",
     "trace": "^2.3.0",

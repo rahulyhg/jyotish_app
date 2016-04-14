@@ -45,11 +45,12 @@ var router = new Router();
 
 let pages = ['/mail', '/advice', '/auth', '/profile', '/users', '/mail/letters'];
 pages.forEach(page => router.get(page + '/*', require('./routes/app').get))
+pages.forEach(page => router.get(page, require('./routes/app').get))
 
 // router.get('/', this.body = this.render('index'));
 router.get('/', require('./routes/frontpage').get);
 router.post('/api/login', require('./routes/login').post);
-// router.post('/logout', require('./routes/logout').post);
+router.post('/api/logout', require('./routes/logout').post);
 // router.register('/', require('./routes/login').post);
 router.post('/api/mail/create/', require('./mail/api').post);
 router.get('/api/mail/show/', require('./mail/api').get);
