@@ -84,9 +84,9 @@ router.put('/auth/login/register/', require('./users/api').put);
 
 app.use(router.routes());
 
-// var socket = require('./libs/socket');
+var socket = require('./libs/socket');
 var server = app.listen(port, ipaddress, function() {
     console.log('%s: Node server started on %s:%d ...',
         Date(Date.now()), ipaddress, port);
 });
-// socket(server);
+socket(server);

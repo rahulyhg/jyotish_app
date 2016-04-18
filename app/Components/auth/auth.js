@@ -1,7 +1,10 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router'
 
-// import routing form './auth.auth.config';
+import auth from './Components/auth';
+import rounting from './auth.config';
 
 export default angular.module('auth', [uirouter])
-	// .config(routing);
+	.component('auth', auth)
+	.config(routing)
+	.name;

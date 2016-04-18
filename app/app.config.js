@@ -1,6 +1,6 @@
 import mailtmpl from './Components/mail/mail.html';
 import advicetmpl from './Components/advice/advice.html';
-import authtmpl from './Components/auth/auth.html'
+// import authtmpl from './Components/auth/auth.html'
 import usertmpl from './Components/users/users-list/users-list.html'
 
 routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
@@ -12,7 +12,7 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
         requireBase: false
     });
     
-    $urlRouterProvider.otherwise('/mail/letters');
+    $urlRouterProvider.otherwise('/auth');
 
     $stateProvider
         .state('mail', {
@@ -25,15 +25,15 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
         })
         .state('auth', {
             url: '/auth',
-            template: authtmpl
+            template: require('./Components/auth/auth.html')
         })
         .state('natalChart', {
             url: '/chart',
-            template: authtmpl
+            template: usertmpl
         })        
         .state('profile', {
             url: '/profile',
-            template: authtmpl
+            template: usertmpl
         })
         .state('users', {
             url: '/users',

@@ -1,12 +1,13 @@
-// routing.$inject = [$stateProvider, $urlProvider];
+routing.$inject = ['$stateProvider', '$urlProvider'];
 
 
-// export default routing($stateProvider, $urlProvider){
+export default function routing ($stateProvider, $urlProvider){
 
-// 	$stateProvider
-// 		.state('profile', {
-// 			url:
+	$stateProvider
+		.state('login', {
+			parent:'auth',
+			url:'/login',
+			template:'<auth></auth>'
+		})
 
-// 		})
-
-// }
+}

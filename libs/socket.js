@@ -7,16 +7,24 @@ var User = require('../models/user');
 var socketIO = require('socket.io');
 var socketEmitter = require('socket.io-emitter');
 // console.log(config.redis.redis_cli.password);
-var redisClient = require('redis').createClient(config.redis.redis_cli);
+//@  redis turn_off
+// var redisClient = require('redis').createClient(config.redis.redis_cli);
+
+
 var socketRedis = require('socket.io-redis');
 var sessionStore = require('./sessionStore');
 
 // console.log(`redis client options:${config.redis.redis_cli}`)
-redisClient.auth(config.redis.password);
+
+//@  redis turn_off
+// redisClient.auth(config.redis.password);
+
+
 function socket(server) {
   var io = socketIO(server);
  
-  io.adapter(socketRedis(redisClient));
+  //@  redis turn_off
+  // io.adapter(socketRedis(redisClient));
  
    io.use(function(socket, next) {
     var handshakeData = socket.request;
@@ -83,7 +91,7 @@ function socket(server) {
   });  
 }
 
-
-socket.emitter = socketEmitter(redisClient);
+//@  redis turn_off
+// socket.emitter = socketEmitter(redisClient);
 
 module.exports = socket;

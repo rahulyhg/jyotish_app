@@ -3,8 +3,7 @@ import angular from 'angular';
 class MailJob {
     
     constructor($http) {
-        this._http = $http;
-        // this.url = 
+        this._http = $http;      
     }
 
     RESTpost(params) {      

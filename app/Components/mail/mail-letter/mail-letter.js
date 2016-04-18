@@ -5,15 +5,19 @@ import lettertmpl from './mail-letter.html';
 
 export class mailLetter {
 
-	 constructor(mailJob, letterConsturctor) {
+	 constructor(mailJob, letterConsturctor, $state) {
 		this._mailJob = mailJob;
 		this._letterConstructor = letterConsturctor;
+		this._state = $state;
 		// 
 		// this._ApiGenerator = ApiGenerator;
 	}
 
 	send () {		
-		this._mailJob.RESTpost(this._letterConstructor.generate(this.params));
+		this._mailJob.RESTpost(this._letterConstructor.generate(this.params))
+			.then(x=>{console.log(x)})
+		this._state.go('letters');	
+
 	}
 }
 
