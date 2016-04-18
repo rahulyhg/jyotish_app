@@ -23,15 +23,17 @@ class MailJob {
         return this._http.get('https://jyotish.gift/api/mail/show/')
     }
 
+    RESTgetOne(UID) {
+        return this._http.get('https://jyotish.gift/api/mail/'+UID)
+    }
+
     RESTdelete(UID) {
         return this._http.delete('https://jyotish.gift/api/mail/del/'+UID)
     }
 
     updRequest(params, options) {
        //To, Subject, textLetter
-        
-
-        return params;
+               return params;
     }
 
     updResponse(query) {
@@ -44,7 +46,6 @@ class MailJob {
         return query
             .map(x => Object.keys(x)
                 .reduce((a, b) => {
-
                     if (b == 'textLetter' && b.length) {
                         a[b] = x[b].slice(0, 5) + '...'
                     } else if (b == 'created') {

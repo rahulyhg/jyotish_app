@@ -11,6 +11,5 @@ import routing from './app.config.js';
 import mail from './Components/mail/mail';
 import users from './Components/users/users';
 
-angular.module('app', [uirouter, ngMaterial,
-		mail, users])
+angular.module('app', [uirouter, mail, users])
 	.config(routing)

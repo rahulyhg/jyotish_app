@@ -7,8 +7,8 @@
  * In gulpfile: in beginning
  */
 'use strict'
-var mongoose = require('mongoose');
-var config = require('config');
+const mongoose = require('mongoose');
+const config = require('config');
 
 if (process.env.MONGOOSE_DEBUG) {
   mongoose.set('debug', true);

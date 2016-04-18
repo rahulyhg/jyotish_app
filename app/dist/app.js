@@ -78,7 +78,7 @@ var app =
 	// import mailJob from './Components/mail/mail.service/mail.api'
 
 
-	_angular2.default.module('app', [_angularUiRouter2.default, _angularMaterial2.default, _mail2.default, _users2.default]).config(_appConfig2.default); // import 'bootstrap/dist/css/bootstrap-min.css';
+	_angular2.default.module('app', [_angularUiRouter2.default, _mail2.default, _users2.default]).config(_appConfig2.default); // import 'bootstrap/dist/css/bootstrap-min.css';
 
 /***/ },
 /* 1 */
@@ -65171,7 +65171,7 @@ var app =
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = routing;
 
@@ -65195,32 +65195,32 @@ var app =
 
 	function routing($stateProvider, $locationProvider, $urlRouterProvider) {
 
-	    $locationProvider.html5Mode({
-	        enabled: true,
-	        requireBase: false
-	    });
+	  $locationProvider.html5Mode({
+	    enabled: true,
+	    requireBase: false
+	  });
 
-	    $urlRouterProvider.otherwise('/auth');
+	  $urlRouterProvider.otherwise('/auth');
 
-	    $stateProvider.state('mail', {
-	        url: '/mail',
-	        template: _mail2.default
-	    }).state('advice', {
-	        url: '/advice',
-	        template: _advice2.default
-	    }).state('auth', {
-	        url: '/auth',
-	        template: __webpack_require__(23)
-	    }).state('natalChart', {
-	        url: '/chart',
-	        template: _usersList2.default
-	    }).state('profile', {
-	        url: '/profile',
-	        template: _usersList2.default
-	    }).state('users', {
-	        url: '/users',
-	        template: _usersList2.default
-	    });
+	  $stateProvider.state('mail', {
+	    url: '/mail',
+	    template: _mail2.default
+	  }).state('advice', {
+	    url: '/advice',
+	    template: _advice2.default
+	  }).state('auth', {
+	    url: '/auth',
+	    template: __webpack_require__(23)
+	  }).state('natalChart', {
+	    url: '/chart',
+	    template: _usersList2.default
+	  }).state('profile', {
+	    url: '/profile',
+	    template: _usersList2.default
+	  }).state('users', {
+	    url: '/users',
+	    template: _usersList2.default
+	  });
 	}
 
 	// }
@@ -65383,6 +65383,11 @@ var app =
 	            return this._http.get('https://jyotish.gift/api/mail/show/');
 	        }
 	    }, {
+	        key: 'RESTgetOne',
+	        value: function RESTgetOne(UID) {
+	            return this._http.get('https://jyotish.gift/api/mail/' + UID);
+	        }
+	    }, {
 	        key: 'RESTdelete',
 	        value: function RESTdelete(UID) {
 	            return this._http.delete('https://jyotish.gift/api/mail/del/' + UID);
@@ -65391,7 +65396,6 @@ var app =
 	        key: 'updRequest',
 	        value: function updRequest(params, options) {
 	            //To, Subject, textLetter
-
 	            return params;
 	        }
 	    }, {
@@ -65402,7 +65406,6 @@ var app =
 
 	            return query.map(function (x) {
 	                return (0, _keys2.default)(x).reduce(function (a, b) {
-
 	                    if (b == 'textLetter' && b.length) {
 	                        a[b] = x[b].slice(0, 5) + '...';
 	                    } else if (b == 'created') {
@@ -65729,13 +65732,32 @@ var app =
 	            }
 	        },
 	        controller: function controller(updateMails) {
-
 	            this.mails = updateMails;
+	            // sessionStorage.mails = JSON.stringify(this.mails);
 	        }
 	    }).state('letterOpen', {
 	        parent: 'mail',
-	        url: '/letters/:id',
-	        template: '<letter></letter>'
+	        url: '/letters/:idLetter',
+	        template: '<letter ng-model=$ctrl.params></letter>',
+	        resolve: {
+	            upd: function upd(mailJob, $stateParams) {
+	                console.log($stateParams);
+	                if ($stateParams) {
+	                    return mailJob.RESTgetOne($stateParams.idLetter).then(function (response) {
+	                        return res;
+	                    }).catch(function (e) {
+	                        //TODO
+	                        console.log('Not Found!', e);
+	                        return {};
+	                    });
+	                }
+	                return {};
+	            }
+	        },
+	        controller: function controller(upd) {
+	            this.ngModel = upd;
+	        },
+	        controllerAs: '$ctrl'
 	    });
 	}
 

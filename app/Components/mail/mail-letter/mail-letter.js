@@ -16,7 +16,7 @@ export class mailLetter {
 	send () {		
 		this._mailJob.RESTpost(this._letterConstructor.generate(this.params))
 			.then(x=>{console.log(x)})
-		this._state.go('letters');	
+		this._state.go('letters');
 
 	}
 }

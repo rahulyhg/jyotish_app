@@ -1,18 +1,18 @@
 'use strict'
-var Cookies = require('cookies');
-var config = require('config');
-var mongoose = require('mongoose');
-var co = require('co');
-var User = require('../models/user');
-var socketIO = require('socket.io');
-var socketEmitter = require('socket.io-emitter');
+const Cookies = require('cookies');
+const config = require('config');
+const mongoose = require('mongoose');
+const co = require('co');
+const User = require('../models/user');
+const socketIO = require('socket.io');
+const socketEmitter = require('socket.io-emitter');
 // console.log(config.redis.redis_cli.password);
 //@  redis turn_off
 // var redisClient = require('redis').createClient(config.redis.redis_cli);
 
 
-var socketRedis = require('socket.io-redis');
-var sessionStore = require('./sessionStore');
+const socketRedis = require('socket.io-redis');
+const sessionStore = require('./sessionStore');
 
 // console.log(`redis client options:${config.redis.redis_cli}`)
 

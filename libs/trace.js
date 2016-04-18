@@ -3,7 +3,7 @@ Error.stackTraceLimit = 1000;
 require('trace');
 require('clarify');
 
-var chain = require('stack-chain');
+const chain = require('stack-chain');
 
 chain.filter.attach(function (error, frames) {
   return frames.filter(function (callSite) {
